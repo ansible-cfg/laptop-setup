@@ -1,0 +1,3 @@
+- name: Install Pencil 
+  apt:
+    deb: https://pencil.evolus.vn/dl/V3.0.4/Pencil_3.0.4_amd64.deb

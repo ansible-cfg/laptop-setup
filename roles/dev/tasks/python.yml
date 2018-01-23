@@ -1,0 +1,6 @@
+- name: Install Python packages
+  pip:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{pip_global_packages}}"
+  become: true

@@ -1,0 +1,15 @@
+- name: Mount DATA device
+  mount:
+    path: /mnt/DATA
+    src: UUID=62B67553B6752925
+    fstype: ntfs
+    opts: rw,uid={{user}},gid={{group}},dmask=022,fmask=022,users,permissions,windows_names,exec,auto
+    state: present
+
+- name: Mount VMs device
+  mount:
+    path: /mnt/vms
+    src: UUID=UUID=6C1F4991209CA889
+    fstype: ntfs
+    opts: rw,uid={{user}},gid={{group}},dmask=022,fmask=022,users,permissions,windows_names,exec,auto
+    state: present

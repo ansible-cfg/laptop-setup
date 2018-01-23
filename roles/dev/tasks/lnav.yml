@@ -1,0 +1,4 @@
+- name: Lnav | Download and install
+  apt:
+    deb: https://github.com/tstack/lnav/releases/download/v0.8.2/lnav_0.8.2_amd64.deb 
+  become: true

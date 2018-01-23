@@ -1,0 +1,11 @@
+- name: Download doctl binary
+  unarchive:
+    src: "https://github.com/digitalocean/doctl/releases/download/v1.7.0/doctl-1.7.0-linux-amd64.tar.gz"
+    remote_src: true
+    dest: "{{setup_dir}}"
+
+- name: move executable to path
+  shell: mv doctl /usr/local/bin
+  args:
+    chdir: "{{setup_dir}}"
+  become: true

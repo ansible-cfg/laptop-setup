@@ -1,0 +1,130 @@
+- name: Install gnome packages
+  apt: name={{item}} state=present
+  with_items:
+    - gnome-tweak-tool
+    - gnome-shell-extensions
+    - gnome-shell-extension-appindicator
+    - chrome-gnome-shell
+    - dconf-tools
+  become: true
+
+- name: Install gnome Extensions
+  gnome_shell_extension:
+    name: "{{item}}"
+    state: present
+    enabled: true
+    gnome_extension_path: "{{ansible_env.HOME}}/.local/share/gnome-shell/extensions/"
+  with_items:
+    - 19    # user themes
+    - 6     # Applications menu
+    - 55    # Media Player indicator
+    - 1176  # Argos
+    - 1065  # Docker integration
+    - 1031  # Top Icons plus
+    #- 1011  # Dynamic panel transparency
+    - 800   # Remove dropdown icons
+    - 750   # Open weather
+    - 97    # Coverflow
+    - 355
+    - 97    # status area horizontal spacing
+    - 427   # Workspaces to dock
+    - 307   # Dash to dock
+    - 708   # Panel OSD
+    - 948   # Feed indicator
+    - 906   # Refresh wifi
+    - 1269  # vagrant indicator
+    - 1162  # emoji selector
+    - 1055  # docker veth hide
+    - 1139  # app update indicator
+    - 820   # minimum workspaces
+
+- name: Configure Dash To dock extension
+  dconf:
+    key: "{{item.key}}"
+    value: "{{item.value}}"
+    state: present
+  with_items:
+    - { key: '/org/gnome/shell/extensions/dash-to-dock/autohide',  value: "true"  }
+    - { key: '/org/gnome/shell/extensions/dash-to-dock/dock-fixed', value: "false" }
+    - { key: '/org/gnome/shell/extensions/dash-to-dock/dock-position', value: "'BOTTOM'" }
+    - { key: '/org/gnome/shell/extensions/dash-to-dock/multi-monitor', value: "true" }
+    - { key: '/org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size', value: "32" }
+    - { key: '/org/gnome/shell/extensions/dash-to-dock/custom-theme-running-docks', value: "true" }
+    - { key: '/org/gnome/shell/extensions/dash-to-dock/background-opacity', value: "0.2" }
+    - { key: '/org/gnome/shell/extensions/dash-to-dock/hotkeys', value: "false" }
+
+- name: Configure Top Icons extension
+  dconf:
+    key: "{{item.key}}"
+    value: "{{item.value}}"
+    state: present
+  with_items:
+    - { key: '/org/gnome/shell/extensions/top-icons/tray-pos', value: "'right'" }
+    - { key: '/org/gnome/shell/extensions/top-icons/tray-order', value: "15" }
+
+- name: Configure Clipboard extension
+  dconf:
+    key: "{{item.key}}"
+    value: "{{item.value}}"
+    state: present
+  with_items:
+    - { key: '/org/gnome/shell/extensions/clipboard-indicator/notify-on-copy', value: "false" }
+    - { key: '/org/gnome/shell/extensions/clipboard-indicator/enable-keybindings', value: "false"}
+
+- name: Configure Open Weather extension
+  dconf:
+    key: "{{item.key}}"
+    value: "{{item.value}}"
+    state: present
+  with_items:
+    - { key: '/org/gnome/shell/extensions/openweather/city', value: "'41.1494512,-8.6107884>Porto, PRT, Porto, 303201rea Metropolitana do Porto, Norte, 4000-424, Portugal >-1'" }
+    - { key: '/org/gnome/shell/extensions/openweather/show-text-in-panel', value: "true" }
+    - { key: '/org/gnome/shell/extensions/openweather/unit', value: "'celsius'" }
+    - { key: '/org/gnome/shell/extensions/openweather/wind-speed-unit', value: "'kph'" }
+    - { key: '/org/gnome/shell/extensions/openweather/position-in-panel', value: "'center'" }
+    - { key: '/org/gnome/shell/extensions/openweather/geolocation-provider', value: "'openstreetmaps'" }
+    - { key: '/org/gnome/shell/extensions/openweather/days-forecast', value: "3" }
+
+- name: Configure Workspaces to dock extension
+  dconf:
+    key: "{{item.key}}"
+    value: "{{item.value}}"
+    state: present
+  with_items:
+    - { key: '/org/gnome/shell/extensions/workspaces-to-dock/background-opacity', value: "0.2" }
+    - { key: '/org/gnome/shell/extensions/workspaces-to-dock/customize-height', value: "true" }
+    - { key: '/org/gnome/shell/extensions/workspaces-to-dock/customize-height-option', value: "1" }
+    - { key: '/org/gnome/shell/extensions/workspaces-to-dock/dock-position', value: "'RIGHT'" }
+    - { key: '/org/gnome/shell/extensions/workspaces-to-dock/dock-fixed', value: "false" }
+    - { key: '/org/gnome/shell/extensions/workspaces-to-dock/opaque-background', value: "true" }
+    - { key: '/org/gnome/shell/extensions/workspaces-to-dock/hide-dash ', value: "true" }
+    - { key: '/org/gnome/shell/extensions/workspaces-to-dock/intelihide', value: "false" }
+    - { key: '/org/gnome/shell/extensions/workspaces-to-dock/top-margin', value: "0" }
+
+- name: Configure Panel OSD Extension
+  dconf:
+    key: "{{item.key}}"
+    value: "{{item.value}}"
+    state: present
+  with_items:
+    - { key: '/org/gnome/shell/extensions/panel-osd/force-expand', value: "true" }
+    - { key: '/org/gnome/shell/extensions/panel-osd/x-pos' , value: "100" }
+
+- name: Configure RSS Feed Extension
+  dconf:
+    key: "{{item.key}}"
+    value: "{{item.value}}"
+    state: present
+  with_items:
+    - { key: '/org/gnome/shell/extensions/rss-feed/rss-feeds-list', value: "['http://scotch.io/feed', 'https://www.sitepoint.com/feed/', 'http://feeds.feedburner.com/d0od']" }
+
+
+- name: Set gnome properties
+  dconf:
+    key: "{{item.key}}"
+    value: "{{item.value}}"
+    state: present
+  with_items:
+    - { key: '/org/gnome/Terminal/Legacy/Settings/theme-variant', value: "'dark'" }
+    - { key: '/org/gnome/Terminal/Legacy/Settings/new-terminal-mode', value: "'tab'" }
+    - { key: '/org/gnome/Terminal/Legacy/Settings/menu-accelerator-enabled', value: "false" }

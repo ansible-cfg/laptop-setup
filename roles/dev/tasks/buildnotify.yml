@@ -1,0 +1,31 @@
+- name: buildNotify | Create download dir
+  file:
+    path: "{{downloads_dir}}"
+    state: directory
+
+- name: buildNotify | Download tarball
+  unarchive:
+    src: https://github.com/anaynayak/buildnotify/archive/1.0.4.tar.gz
+    remote_src: true
+    dest: "{{downloads_dir}}"
+
+- name: buildNotify | Install dependencies
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - python-pyqt5 
+    - pyqt5-dev-tools 
+    - python-tz 
+    - python-dateutil 
+    - qtdeclarative5-dev 
+    - qttools5-dev-tools 
+    - python-keyring
+  become: true
+
+- name: buildNotify | Install
+  command: python setup.py install
+  args: 
+    chdir: "{{downloads_dir}}/buildnotify-1.0.4"
+  become: true
+

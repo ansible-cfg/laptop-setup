@@ -1,0 +1,17 @@
+- name: Download kubectx tarball
+  unarchive:
+    src: https://github.com/ahmetb/kubectx/archive/v0.4.0.tar.gz
+    remote_src: true
+    dest: "{{downloads_dir}}"
+  become: true
+
+- name: Copy files to bin directory
+  copy:
+    src: "{{item.src}}"
+    dest: "{{item.dest}}"
+    mode: a+x
+  with_items:
+    - { src: '{{downloads_dir}}/kubectx-0.4.0/kubectx', dest: '{{bin_dir}}/kubectx'}
+    - { src: '{{downloads_dir}}/kubectx-0.4.0/kubens', dest: '{{bin_dir}}/kubens'}
+    - { src: '{{downloads_dir}}/kubectx-0.4.0/utils.bash', dest: '{{bin_dir}}/utils.bash'}
+  become: true

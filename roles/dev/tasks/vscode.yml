@@ -1,0 +1,22 @@
+
+- name: Visual studio code - Add apt key
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+  become: true
+
+- name: "Visual Studio code - Add APT repository"
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+    state: present
+  become: true
+
+- name: "Visual Studio code Install"
+  apt:
+    name: code
+    state: present
+    update_cache: yes
+  become: true
+
+- name: "Installs settings sync extension"
+  command: code --install-extension Shan.code-settings-sync

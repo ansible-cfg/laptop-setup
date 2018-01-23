@@ -1,0 +1,4 @@
+- name: Download and install Hugo
+  apt:
+    deb: https://github.com/gohugoio/hugo/releases/download/v0.32.4/hugo_0.32.4_Linux-64bit.deb
+  become: true

@@ -1,0 +1,4 @@
+- name: Install draw.io
+  apt:
+    deb:  "https://github.com/jgraph/drawio-desktop/releases/download/v7.9.5/draw.io-amd64-7.9.5.deb"
+  become: true

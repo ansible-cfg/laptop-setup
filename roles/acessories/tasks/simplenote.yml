@@ -1,0 +1,4 @@
+- name: Install simplenote
+  apt:
+    deb: https://github.com/Automattic/simplenote-electron/releases/download/v1.1.2/Simplenote-linux-1.1.2.deb
+  become: true

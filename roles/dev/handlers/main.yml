@@ -1,0 +1,8 @@
+- name: Restart resolvconf
+  service: name=resolvconf state=restarted
+
+- name: Restart dnsmasq
+  service: name=dnsmasq state=restarted
+
+- name: restart docker
+  service: name=docker state=restarted

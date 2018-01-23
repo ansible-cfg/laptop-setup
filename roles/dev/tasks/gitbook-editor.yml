@@ -1,0 +1,6 @@
+
+
+- name: Install GitBook Editor
+  apt:
+    deb: "https://www.gitbook.com/editor/linux-64-bit/download"
+  become: true

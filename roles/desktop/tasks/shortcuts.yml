@@ -1,0 +1,15 @@
+- name: Set Tilix Guake mode shortuct
+  dconf:
+    key: "{{item.key}}"
+    value: "{{item.value}}"
+    state: present
+  with_items:
+    - { key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding', value: "'F12'" }
+    - { key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command', value: "'tilix --profile=\"Quake\" --quake'" }
+    - { key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name', value: "'Tilix Quake mode toggle'" }
+
+- name: Set custom keybindings
+  dconf:
+    key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings'
+    value: ['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+    state: present

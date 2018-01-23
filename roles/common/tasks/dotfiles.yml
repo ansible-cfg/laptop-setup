@@ -1,0 +1,18 @@
+---
+- name: Ensure yadm is installed.
+  apt:
+    name: yadm
+    state: latest
+
+- name: Fetch dotfiles.
+  shell: yadm clone {{ dotfiles_url }}
+  args:
+    creates: "~/.yadm/repo.git"
+  register: yadm_clone_result
+
+- name: Overwrite local changes, if needed.
+  shell: yadm reset --hard
+  when: yadm_clone_result.changed
+
+- name: Decrypt files
+  shell: yadm decrypt

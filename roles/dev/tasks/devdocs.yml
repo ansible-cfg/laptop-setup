@@ -1,0 +1,4 @@
+- name: Install DevDocs
+  apt:
+    deb: "https://github.com/egoist/devdocs-desktop/releases/download/v0.6.8/DevDocs_0.6.8_amd64.deb"
+  become: true

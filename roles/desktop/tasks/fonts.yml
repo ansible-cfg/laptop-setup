@@ -1,0 +1,25 @@
+
+- name: Ensure .fonts directory exists
+  file:
+    path: "{{ ansible_env.HOME }}/.local/share/fonts"
+    state: directory
+    mode: 0755
+
+- name: Installs fonts from APT
+  apt: name={{item}} state=present
+  with_items:
+    - fontconfig
+    - typecatcher
+    - font-manager
+    - fonts-firacode
+    - fonts-powerline
+  become: true
+
+- name: Install source code pro fonts
+  git:
+    repo: 'https://github.com/adobe-fonts/source-code-pro.git'
+    dest: "{{ ansible_env.HOME }}/.local/share/fonts/adobe-fonts/source-code-pro"
+    update: no
+    depth: 1
+  notify:  
+    - Clean font cache

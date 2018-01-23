@@ -1,0 +1,1 @@
+dotfiles_url: https://{{gitlab_user}}:{{gitlab_password | urlencode }}@gitlab.com/brpaz/yadm-dotfiles

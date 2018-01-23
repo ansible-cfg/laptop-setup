@@ -1,0 +1,30 @@
+- import_tasks: hub.yml
+  tags: hub
+- import_tasks: pet.yml
+  tags: pet
+- import_tasks: doctl.yml
+  tags: doctl
+- import_tasks: ctop.yml
+  tags: ctop
+- import_tasks: git-semver.yml
+  tags: git-semver
+- import_tasks: oc.yml
+  tags: openshift
+- import_tasks: codeclimate-cli.yml
+  tags: codeclimate
+- import_tasks: heroku-cli.yml
+- import_tasks: kubectl.yml
+  tags: kubernetes
+- import_tasks: kubectx.yml
+  tags: [kubernetes, kubectx]
+- import_tasks: helm.yml
+  tags: [kubernetes, helm]
+- import_tasks: terraform.yml
+  tags: terraform
+- import_tasks: packer.yml
+- import_tasks: vagrant.yml
+  tags: vagrant
+- import_tasks: google-cloud-sdk.yml
+  tags: gcloud
+- import_tasks: sterm.yml
+  tags: sterm

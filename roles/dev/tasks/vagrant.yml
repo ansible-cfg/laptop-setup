@@ -1,0 +1,15 @@
+
+---
+- name: Vagrant check install status
+  command: "vagrant --version"
+  register: result
+  ignore_errors: True
+
+- name: Vagrant install
+  apt:
+    deb: "https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.deb"
+  when: "result.rc !=0"
+  become: true
+
+- name: Install Vagrant plugins
+  command: vagrant plugin install vagrant-hostsupdater vagrant-aws vagrant-digitalocean

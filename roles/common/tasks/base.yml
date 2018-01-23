@@ -1,0 +1,73 @@
+
+- name: Set Timezone
+  timezone:
+    name: Europe/Lisbon
+
+- name: Configure locales
+  locale_gen:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - pt_PT.UTF-8
+    - en_GB.UTF-8
+
+- name: Install base system packages
+  apt: name={{item}} state=present
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - python-software-properties
+    - software-properties-common
+    - build-essential
+    - curl
+    - wget
+    - git
+    - vim
+    - tree
+    - htop
+    - atop
+    - iotop
+    - iostat
+    - snapd
+    - pwgen
+    - python
+    - python-pip
+    - ncdu
+    - tlp
+    - tlp-rdw
+    - unzip
+    - unar
+    - autoconf
+    - libssl-dev
+    - gnupg2
+    - xclip
+    - peco
+    - realpath
+    - pandoc
+    - mlocate
+    - rsync
+
+- name: "Add Flatpak PPA"
+  apt_repository:
+    repo: 'ppa:alexlarsson/flatpak'
+
+- name: "Install flatpak"
+  apt:
+    name: flatpak
+    state: present
+
+- name: "Get flatpak remotes"
+  shell: flatpak remotes
+  register: flatpak_remotes
+
+- name: "Add flathub repository"
+  command: flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+  become: true
+  when: '"flathub" not in flatpak_remotes.stdout'
+
+- name: "Install Ubuntu specific packages"
+  apt: name={{item}} state=present
+  with_items:
+    - ubuntu-restricted-extras
+  when: ansible_distribution == 'Ubuntu'
+  

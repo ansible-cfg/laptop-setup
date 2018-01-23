@@ -1,0 +1,11 @@
+---
+  - import_tasks: users.yml
+    tags: [ 'users' ]
+  - import_tasks: base.yml
+    tags: [ 'base' ]
+  - import_tasks: dotfiles.yml
+    tags: [ 'dotfiles' ]
+  - import_tasks: vim.yml
+    tags: [ 'vim' ]
+  - import_tasks: shell.yml
+

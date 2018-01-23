@@ -1,0 +1,120 @@
+go_root: /usr/local/go
+go_bin_dir: /usr/local/go/bin
+go_path: "{{ansible_env.HOME}}/go"
+
+hugo_version: 0.32.4
+docker_bip: 172.17.0.1
+
+npm_global_packages:
+  - angular-cli
+  - artillery
+  - bitbucket-cli
+  - caniuse-cmd
+  - clog-cli
+  - cloudflare-cli
+  - cordova
+  - cordova-cli
+  - create-react-app
+  - doctoc
+  - electron
+  - electron-forge
+  - electron-packager
+  - ember-cli
+  - eslint
+  - eslint-config-airbnb-base
+  - eslint-plugin-import
+  - extract
+  - faker-cli
+  - fbpaldl-cli
+  - firebase-tools
+  - fkill-cli
+  - forever
+  - generator-awesome-list
+  - generator-chrome-extension
+  - generator-code
+  - generator-composer-php-library
+  - generator-editorconfig
+  - generator-electron-naive
+  - generator-gitattributes
+  - generator-gitignore
+  - generator-hubot
+  - generator-jquery
+  - generator-webapp
+  - get-port-cli
+  - git-open
+  - gitbook-cli
+  - gitbook-cli
+  - google-font-installer
+  - hotel
+  - how2
+  - http-server
+  - json-server
+  - lighthouse
+  - localtunnel
+  - markdown-toc
+  - mediumcli
+  - namecheap-cli
+  - nodemon
+  - np
+  - opn-cli
+  - overcast
+  - pageres-cli
+  - parse-columns-cli
+  - pdf-cli
+  - pm2
+  - prettier
+  - psi
+  - public-ip-cli
+  - release-it
+  - resume-cli
+  - serverless
+  - tldr
+  - trash-cli
+  - typescript
+  - viewport-list-cli
+  - vue-cli
+  - yo
+
+rubygems:
+  - bundler
+  - dpl
+  - fpm
+  - gist
+  - jekyll
+  - middleman
+  - rails
+  - rake
+  - rspec
+  - rubocop
+  - serverspec
+  - terraforming
+  - test-kitchen
+  - travis
+
+composer_global_packages:
+  - felixfbecker/language-server
+  - hirak/prestissimo
+  - jetbrains/phpstorm-stubs
+  - friendsofphp/php-cs-fixer
+
+pip_global_packages:
+  - awscli 
+  - choosealicense-cli 
+  - cookiecutter 
+  - fabric 
+  - httpie 
+  - locust 
+  - mkdocs 
+  - mkdocs-material 
+  - mycli 
+  - pep8 
+  - pip 
+  - pip3
+  - Pygments 
+  - PyLint
+  - python-gitlab
+  - PyYAML 
+  - setuptools
+  - speedtest-cli 
+  - tmuxp 
+  - trash-cli

@@ -1,0 +1,53 @@
+- name: Ansible playbook to setup my local machine with my applications and  settings
+  hosts: local
+  connection: local
+
+  vars_prompt:
+    - name: gitlab_password
+      prompt: "Enter your Gitlab password"
+      private: yes
+
+  vars_files:
+    - vars/defaults.yml
+
+  pre_tasks:
+
+    - name: upgrade packages
+      apt: upgrade=yes update_cache=yes cache_valid_time=300
+      become: yes
+
+    - name: make sure setup directories exists
+      file:
+        path: "{{item}}"
+        state: directory
+      with_items:
+        - "{{setup_dir}}"
+        - "{{icons_dir}}"
+        - "{{downloads_dir}}"
+
+  roles:
+    - { role: common, tags: [ 'common' ] }
+    - { role: network, tags: [ 'network' ] }
+    - { role: acessories, tags: [ 'apps', 'acessories' ] }
+    - { role: internet, tags: [ 'apps', 'internet' ] }
+    - { role: multimedia, tags: [ 'apps', 'multimedia' ] }
+    - { role: dev, tags: [ 'apps', 'dev' ] }
+    - { role: games, tags: [ 'apps', 'games' ] }
+    - { role: desktop, tags: [ 'desktop'] }
+    - { role: cerebro, tags: ['cerebro']} # Needs to be loaded after "dev" role because it needs npm installed to download
+
+  post_tasks:
+    - name: Set favorite apps
+      dconf:
+        key: '/org/gnome/shell/favorite-apps'
+        value: "{{favorite_apps}}"
+
+    - name: cleanup system
+      apt:
+        name: "{{item}}"
+        state: absent
+        autoremove: yes
+      with_items:
+         - ubuntu-web-launchers 
+         - thunderbird 
+         - cheese

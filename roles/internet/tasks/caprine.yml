@@ -1,0 +1,5 @@
+
+- name: install Caprine
+  apt:
+    deb: https://github.com/sindresorhus/caprine/releases/download/v{{caprine_version}}/caprine_{{caprine_version}}_amd64.deb
+  become: true

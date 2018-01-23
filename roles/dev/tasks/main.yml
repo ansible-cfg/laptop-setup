@@ -1,0 +1,58 @@
+
+
+- name: Installs base development packages from APT
+  apt: name={{item}} state=present
+  with_items:
+    - git
+    - sqlitebrowser
+    - meld
+    - jq
+    - tmux
+    - screen
+    - tig
+    - nginx
+  become: true
+
+- import_tasks: python.yml
+  tags: python
+- import_tasks: node.yml
+  tags: node
+- import_tasks: ruby.yml
+  tags: ruby
+- import_tasks: php.yml
+  tags: php
+- import_tasks: golang.yml
+  tags: go
+- import_tasks: java.yml
+  tags: java
+- import_tasks: vscode.yml
+  tags: vscode
+- import_tasks: mysql-workbench.yml
+- import_tasks: postman.yml
+  tags: postman
+- import_tasks: kitematic.yml
+  tags: kitematic
+- import_tasks: jetbrains.yml
+  tags: jetbrains
+- import_tasks: gitbook-editor.yml
+  tags: gitbook
+- import_tasks: devdocs.yml
+  tags: devdocs
+- import_tasks: keylord.yml
+  tags: keylord.yml
+#- import_tasks: robo3t.yml
+#  tags: robo3t
+- import_tasks: lnav.yml
+  tags: lnav
+- import_tasks: hugo.yml
+  tags: hugo
+- import_tasks: minikube.yml
+  tags: minikube
+- import_tasks: virtualbox.yml
+  tags: virtualbox
+- import_tasks: docker.yml
+  tags: docker
+- import_tasks: cli.yml
+  tags: cli-tools
+- import_tasks: buildnotify.yml
+  tags: buildnotify

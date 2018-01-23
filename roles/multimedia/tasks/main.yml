@@ -1,0 +1,47 @@
+
+- name: "Add Multimedia APT Repositories"
+  apt_repository:
+    repo: "{{item}}"
+    state: present
+  with_items:
+    - ppa:peek-developers/stable
+    - ppa:audio-recorder/ppa
+    - ppa:kdenlive/kdenlive-stable
+    - ppa:cteehayder/ffmulticonverter
+    - ppa:sil/pick
+  become: true
+
+- name: Install Multimedia applications from APT
+  apt: name={{item}} state=present
+  with_items:
+    - audacity
+    - youtube-dl
+    - vlc
+    - shutter 
+    - kazam 
+    - pinta 
+    - kdenlive
+    - easytag 
+    - handbrake
+    - ffmpeg
+    - peek
+    - audio-recorder
+    - brasero
+    - ffmulticonverter
+    - trimage
+    - pick
+  become: true
+
+- import_tasks: spotify.yml
+- import_tasks: google-music-manager.yml
+
+# Find out why extract is not working for this.
+#- import_tasks: gravit.yml
+#  tags: gravit
+- import_tasks: gradio.yml
+- import_tasks: pencil.yml
+- import_tasks: plex.yml
+- import_tasks: xnview.yml
+
+
+

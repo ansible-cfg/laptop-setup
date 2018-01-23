@@ -1,0 +1,37 @@
+
+- name: Add Tilix PPA
+  apt_repository:
+    repo: ppa:webupd8team/terminix
+    state: present
+  become: true
+
+- name: Install Tilix
+  apt:
+    name: tilix
+    state: present
+  become: true
+
+- name: Install VTE extension
+  file: 
+    src: '/etc/profile.d/vte-2.91.sh'
+    dest: '/etc/profile.d/vte.sh'
+    state: link
+
+- name: Configure tilix settings
+  dconf:
+    key: "{{item.key}}"
+    value: "{{item.value}}"
+    state: present
+  with_items:
+    - { key: '/com.gexperts.Tilix.quake-hide-headerbar', value: "true" }
+    - { key: '/com.gexperts.Tilix.quake-hide-lose-focus', value: "true" }
+    - { key: '/com.gexperts.Tilix.terminal-title-style ', value: "'NONE'" }
+    - { key: '/com.gexperts.Tilix.terminal-title-show-when-single', value: "false" }
+    - { key: '/com.gexperts.Tilix.theme-variant', value: "'dark'" }
+
+- name: Set Tilix as default terminal
+  alternatives:
+    name: x-terminal-emulator
+    link: /usr/bin/x-terminal-emulator
+    path: /usr/bin/tilix.wrapper
+  become: true

@@ -1,0 +1,10 @@
+- name: git-semver | Download package
+  unarchive:
+    src: https://github.com/markchalloner/git-semver/archive/master.zip 
+    remote_src: true
+    dest: "{{setup_dir}}"
+
+- name: git-semver | Install
+  shell: ./install.sh
+  args:
+    chdir: "{{setup_dir}}/git-semver-master"

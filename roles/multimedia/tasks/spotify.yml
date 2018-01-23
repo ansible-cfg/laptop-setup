@@ -1,0 +1,5 @@
+- name: Install Spotify
+  command: snap install spotify --classic
+  register: spotify_install_result
+  become: true
+  changed_when: '"already installed" not in spotify_install_result.stderr'

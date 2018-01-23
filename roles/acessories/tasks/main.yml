@@ -1,0 +1,34 @@
+
+- name: "Add Acessories PPAs"
+  apt_repository:
+    repo: "{{item}}"
+    state: present
+  with_items:
+    - ppa:webupd8team/y-ppa-manager
+    - ppa:nextcloud-devs/client
+    - ppa:stefansundin/truecrypt
+  become: true
+
+- name: Install accessories applications
+  apt: name={{item}} state=present
+  with_items:
+    - menulibre
+    - ufw
+    - gnome-contacts
+    - bleachbit 
+    - grsync 
+    - gparted 
+    - y-ppa-manager 
+    - pyrenamer 
+    - nextcloud-client 
+    - truecrypt
+  become: true
+
+- import_tasks: 'boostnote.yml'
+  tags: boostnote
+  
+- import_tasks: 'simplenote.yml'
+  tags: simplenote
+
+- import_tasks: 'tilix.yml'
+  tags: tilix

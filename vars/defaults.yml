@@ -1,0 +1,29 @@
+# Variables for this playbook.
+setup_dir: "{{ansible_env.HOME}}/setup"
+downloads_dir: "{{setup_dir}}/downloads"
+gitlab_user: brpaz
+
+mount_devices: true
+symlink_data_dirs: false
+
+# ===============================
+# System variables
+# ==============================
+user: bruno
+group: bruno
+applications_dir: "{{ ansible_env.HOME}}/.local/share/applications"
+icons_dir: "{{ ansible_env.HOME}}/.local/share/icons"
+bin_dir: "/usr/local/bin"
+
+# ===============================
+# Desktop configuration
+# ==============================
+gtk_theme: Materia-light
+icon_theme: Papirus-Adapta-Nokto
+shell_theme: Materia-light
+desktop_session: xorg # set session as xorg or wayland
+
+default_applications:
+  browser: google-chrome-browser
+
+favorite_apps: ['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'com.gexperts.Tilix.desktop', 'spotify.desktop', 'boostnote.desktop', 'simplenote.desktop', 'slack.desktop', 'code.desktop', 'jetbrains-toolbox.desktop', 'mailspring.desktop', 'kitematic.desktop']

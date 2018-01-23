@@ -1,0 +1,25 @@
+- name: Download jetbrains toolbox tarball
+  unarchive:
+    src: https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.6.2914.tar.gz
+    remote_src: true
+    dest: "{{setup_dir}}"
+    extra_opts: ['--strip-components=1']
+
+- name: Move jetbrains-toolbox executable to correct location
+  copy:
+    src: "{{setup_dir}}/jetbrains-toolbox"
+    dest: "/usr/local/bin/jetbrains-toolbox"
+    owner: "{{user}}"
+    group: "{{group}}"
+    mode: a+x
+  become: true
+ 
+- name: Create desktop file
+  copy:
+    src: "jetbrains.desktop"
+    dest: "{{applications_dir}}/jetbrains-toolbox.desktop"
+
+- name: Copy icon file
+  copy:
+    src: "toolbox.svg"
+    dest: "{{icons_dir}}/jetbrains-toolbox.desktop"

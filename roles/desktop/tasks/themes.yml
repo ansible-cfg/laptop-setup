@@ -1,0 +1,82 @@
+- name: "Add Themes PPAs"
+  apt_repository:
+    repo: "{{item}}"
+    state: present
+  with_items:
+    - ppa:tista/adapta
+    - ppa:numix/ppa
+    - ppa:papirus/papirus
+    - ppa:snwh/pulp
+  become: true
+
+- name: Install Themes packages
+  apt: name={{item}} state=present
+  with_items:
+    - gnome-themes-standard
+    - arc-theme
+    - adapta-gtk-theme 
+    - papirus-icon-theme
+    - numix-icon-theme-circle
+    - paper-icon-theme 
+    - paper-cursor-theme
+  become: true
+
+- name: Materia Theme | Download
+  unarchive:
+    src: https://github.com/nana-4/materia-theme/archive/master.tar.gz 
+    remote_src: true
+    dest: "{{setup_dir}}"
+
+- name: Materia Theme | Install
+  shell: ./install.sh
+  args:
+    chdir: "{{setup_dir}}/materia-theme-master"
+  become: true
+
+- name: Set gtk theme
+  dconf:
+    key: "/org/gnome/desktop/interface/gtk-theme"
+    value: "'{{gtk_theme}}'"
+    state: present
+
+- name: Set shell theme
+  dconf:
+    key: "/org/gnome/shell/extensions/user-theme"
+    value: "'{{shell_theme}}"
+    state: present
+
+- name: Set icon theme
+  dconf:
+    key: "/org/gnome/desktop/interface/icon-theme"
+    value: "'{{icon_theme}}'"
+    state: present
+
+- name: Ensure backgrounds directory exists
+  file:
+    path: "{{ansible_env.HOME}}/.local/share/backgrounds"
+    state: directory
+
+- name: Move wallpaper to backgrounds directory
+  copy:
+    src: wallpaper_porto_001.jpg
+    dest: "{{ansible_env.HOME}}/.local/share/backgrounds/wallpaper_porto_001.jpg"
+
+- name: Configure wallpaper
+  dconf:
+    key: "{{item.key}}"
+    value: "{{item.value}}"
+    state: present
+  with_items:
+    - { key: "/org/gnome/desktop/background/picture-uri", value: "'file://{{ansible_env.HOME}}/.local/share/backgrounds/wallpaper_porto_001.jpg'" }
+    - { key: "/org/gnome/desktop/background/picture-options", value: "'zoom'" }
+    - { key: "/org/gnome/desktop/background/show-desktop-icons", value: "true" }
+
+- name: Configure screensaver
+  dconf:
+    key: "{{item.key}}"
+    value: "{{item.value}}"
+    state: present
+  with_items:
+    - { key: "/org/gnome/desktop/screensaver/picture-uri", value: "'file://{{ansible_env.HOME}}/.local/share/backgrounds/wallpaper_porto_001.jpg'" }
+    - { key: "/org/gnome/desktop/background/picture-options", value: "'zoom'" }
+    - { key: "/org/gnome/desktop/background/show-desktop-icons", value: "true" }

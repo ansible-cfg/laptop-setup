@@ -1,0 +1,20 @@
+- name: Install network tools
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - net-tools
+    - nmap
+    - whois
+    - traceroute
+    - wireshark
+    - ufw
+    - gufw
+  become: true
+
+#- name: Disable systemd-resolved service
+  #systemd: name=systemd-resolved state=stopped enabled=no
+  #become: true
+
+- import_tasks: firewall.yml
+  tags: [ 'firewall' ]

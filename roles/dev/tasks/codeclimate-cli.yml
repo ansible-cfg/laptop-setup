@@ -1,0 +1,12 @@
+- name: CodeClimate Cli | Download archive
+  unarchive:
+    src:  https://github.com/codeclimate/codeclimate/archive/master.tar.gz
+    remote_src: true
+    dest: "{{setup_dir}}"
+    extra_opts: ['--strip-components=1']
+
+- name: CodeClimate Cli | Install
+  shell: make install
+  become: true
+  args:
+    chdir: "{{setup_dir}}"

@@ -1,0 +1,4 @@
+- name: install Skype
+  apt:
+    deb: https://go.skype.com/skypeforlinux-64.deb
+  become: true

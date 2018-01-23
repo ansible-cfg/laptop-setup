@@ -1,0 +1,5 @@
+- name: Install Boostnote
+  apt:
+    deb: "https://github.com/BoostIO/boost-releases/releases/download/v0.8.19/boostnote_0.8.19_amd64.deb"
+  become: true
+  

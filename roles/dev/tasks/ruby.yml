@@ -1,0 +1,16 @@
+- name: Installs RVM GPG key
+  gpg_import: 
+     key_id: 409B6B1796C275462A1703113804BB82D39DC0E3
+     state: present
+
+- name: Download and install rvm
+  shell: curl -sSL https://get.rvm.io | bash -s stable --ruby
+
+- name: Sources RVM
+  shell: source {{ ansible_env.HOME }}/.rvm/scripts/rvm
+- name: Install global Rubygems
+  gem:
+    name: "{{item}}"
+    state: latest
+  with_items: "{{rubygems}}"
+

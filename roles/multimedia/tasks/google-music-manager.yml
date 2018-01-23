@@ -1,0 +1,18 @@
+- name: Google Music Manager - Add apt key
+  apt_key:
+    url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+    state: present
+  become: true
+
+- name: Google Music Manager - Add apt repository
+  apt_repository:  
+    repo: "deb http://dl.google.com/linux/musicmanager/deb/ stable main"
+    state: present
+    filename: 'google-musicmanager'
+  become: true
+
+- name: Google Music manager install
+  apt:
+    name:  google-musicmanager
+    state: present
+  become: true

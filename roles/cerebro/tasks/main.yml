@@ -1,0 +1,16 @@
+- name: Install Cerebro
+  apt:
+    deb: https://github.com/brpaz/cerebro/releases/download/v0.3.2-brpaz/cerebro_0.3.2_amd64.deb
+  become: true
+
+- name: Ensure plugins dir exists
+  file:
+    path:  "{{cerebro_plugin_dir}}"
+    state: directory
+    
+- name: Install cerebro plugins
+  npm:
+     name: "{{item}}"
+     path: "{{cerebro_plugin_dir}}"
+  with_items: "{{cerebro_plugins}}"
+

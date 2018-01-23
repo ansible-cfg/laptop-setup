@@ -1,0 +1,23 @@
+
+- name: Ensure .zsh directory exists
+  file:
+    path: "{{ ansible_env.HOME }}/.zsh"
+    state: directory
+    mode: 0755
+
+- name: Instlall zsh
+  apt:
+    name: zsh
+    state: present
+
+- name: Set zsh as default shell
+  user: name={{ user }} shell=/usr/bin/zsh
+
+- name: Check zplug is installed
+  stat:
+    path: "{{ ansible_env.HOME}}/.zplug"
+  register: zplug_dir
+
+- name: Installs zplug
+  shell: curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+  when: "zplug_dir.stat.exists == False"

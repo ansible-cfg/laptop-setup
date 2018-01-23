@@ -1,0 +1,4 @@
+- name: Install GitKraken
+  apt:
+    deb: "https://www.gitkraken.com/download/linux-deb"
+  become: true

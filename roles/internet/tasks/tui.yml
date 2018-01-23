@@ -1,0 +1,29 @@
+- name: Download Tui binary from GitHub
+  unarchive:
+    src: "https://github.com/rhysd/Tui/releases/download/v0.4.15/Tui-linux-x64-0.4.15.zip"
+    dest: "{{ setup_dir }}"
+    remote_src: true
+
+- name: Remove any previous installs
+  file:
+    path: /opt/Tui
+    state: absent
+  become: true
+
+- name: Moves Tui to /opt
+  command: mv Tui-linux-x64 /opt/Tui
+  args:
+    chdir: "{{setup_dir}}"
+  become: true
+
+- name: Set correct permissions
+  file:
+    path: /opt/Tui
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: Create .desktop file
+  copy: 
+    src: Tui.desktop
+    dest: "{{ansible_env.HOME}}/.local/share/applications/Tui.desktop"
+    force: no

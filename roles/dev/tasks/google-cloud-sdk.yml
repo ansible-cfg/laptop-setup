@@ -1,0 +1,16 @@
+- name: Adds gcloud key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+  become: true
+
+- name: Adds gcloud repos
+  apt_repository:
+    repo: "deb http://packages.cloud.google.com/apt cloud-sdk-{{ ansible_distribution_release }} main"
+  become: true
+
+- name: Installs google-cloud-sdk
+  apt:
+    name: "google-cloud-sdk"
+    state: present
+  become: true

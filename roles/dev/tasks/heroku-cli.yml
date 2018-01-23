@@ -1,0 +1,9 @@
+
+- name: check install status
+  command: "heroku --version"
+  register: heroku_version
+  ignore_errors: True
+
+- name: Installs Heroku cli
+  shell: wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+  when: "heroku_version.rc != 0"

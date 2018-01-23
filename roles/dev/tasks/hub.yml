@@ -1,0 +1,11 @@
+- name: Download and extract hub tarball
+  unarchive: 
+    src: https://github.com/github/hub/releases/download/v2.3.0-pre10/hub-linux-amd64-2.3.0-pre10.tgz
+    remote_src: true
+    dest: "{{setup_dir}}"
+
+- name: run Hub installer
+  shell: ./install
+  args:
+   chdir: "{{setup_dir}}/hub-linux-amd64-2.3.0-pre10"
+  become: true

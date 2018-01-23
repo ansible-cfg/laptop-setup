@@ -1,0 +1,4 @@
+- name: Install Xnview
+  apt:
+    deb: http://download.xnview.com/XnConvert-linux-x64.deb
+  become: true

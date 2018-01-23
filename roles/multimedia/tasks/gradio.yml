@@ -1,0 +1,4 @@
+- name: "Install Gradio from Flatpak"
+  flatpak:
+    name: https://flathub.org/repo/appstream/de.haeckerfelix.gradio.flatpakref
+    state: present

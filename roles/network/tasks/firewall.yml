@@ -1,0 +1,28 @@
+
+- name: Firewall | Configure ufw defaults
+  ufw: direction={{ item.direction }} policy={{ item.policy }}
+  with_items:
+    - { direction: 'incoming', policy: 'deny' }
+    - { direction: 'outgoing', policy: 'allow' }
+  notify:
+    - restart ufw
+  become: true
+
+- name: Firewall | Configure ufw rules
+  ufw: rule={{ item.rule }} port={{ item.port }} proto={{ item.proto }}
+  with_items:
+    - { rule: 'allow', port: '80', proto: 'tcp' }
+    - { rule: 'allow', port: '443', proto: 'tcp' }
+  notify:
+    - restart ufw
+  become: true
+
+- name: Firewall | Enable ufw logging
+  ufw: logging=on
+  notify:
+    - restart ufw
+  become: true
+
+- name: Firewall | Enable ufw
+  ufw: state=enabled
+  become: true

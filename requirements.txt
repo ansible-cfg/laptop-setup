@@ -1,0 +1,5 @@
+python-apt
+docker==2.0.0
+docker-py
+ansible==2.4.2
+psutil==5.4.3

@@ -1,0 +1,9 @@
+- name: Download and Extract Kitematic
+  unarchive:
+    src: https://github.com/docker/kitematic/releases/download/v0.17.3/Kitematic-0.17.3-Ubuntu.zip
+    remote_src: true
+    dest: "{{setup_dir}}"
+
+- name: Install Kitematic Deb file
+  apt:
+    deb:  "{{setup_dir}}/dist/Kitematic_0.17.3_amd64.deb"

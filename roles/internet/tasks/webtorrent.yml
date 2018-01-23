@@ -1,0 +1,5 @@
+
+- name: install Webtorrent
+  apt:
+    deb: https://github.com/webtorrent/webtorrent-desktop/releases/download/v0.18.0/webtorrent-desktop_0.18.0-1_amd64.deb 
+  become: true

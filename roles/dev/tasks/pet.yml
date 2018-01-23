@@ -1,0 +1,17 @@
+- name: Download and pet tarball
+  unarchive: 
+    src: https://github.com/knqyf263/pet/releases/download/v0.2.4/pet_0.2.4_linux_amd64.zip
+    remote_src: true
+    dest: "{{setup_dir}}"
+
+- name: Make executable
+  file:
+    path: "{{setup_dir}}/pet"
+    mode: a+x
+  become: true
+
+- name: Move pet executable to correct location
+  shell: mv pet /usr/local/bin
+  args:
+   chdir: "{{setup_dir}}"
+  become: true

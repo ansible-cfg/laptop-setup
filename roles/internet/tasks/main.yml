@@ -1,0 +1,43 @@
+
+- name: Install internet applications
+  apt: name={{item}} state=present
+  with_items:
+    - firefox
+    - transmission
+    - hexchat
+    - uget
+    #- reminna
+  become: true
+
+- import_tasks: 'dropbox.yml'
+  tags: dropbox
+
+- import_tasks: 'chrome.yml'
+  tags: chrome
+
+- import_tasks: 'discord.yml'
+  tags: discord
+
+- import_tasks: 'mailspring.yml'
+  tags: mailspring
+
+- import_tasks: 'ramme.yml'
+  tags: ramme
+
+- import_tasks: 'skype.yml'
+  tags: skype
+
+- import_tasks: 'slack.yml'
+  tags: slack
+
+- import_tasks: 'caprine.yml'
+  tags: caprine
+
+- import_tasks: 'tui.yml'
+  tags: tui
+
+- import_tasks: 'webtorrent.yml'
+  tags: webtorrent
+
+- import_tasks: 'teamviewer.yml'
+  tags: teamviewer
