@@ -45,6 +45,8 @@ if [ ! $? -eq 0 ]; then
     exit -1
 if
 
+yadm decrypt
+
 dropbox start -i
 
 sudo tlp start

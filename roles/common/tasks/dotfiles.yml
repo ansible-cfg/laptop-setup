@@ -3,6 +3,7 @@
   apt:
     name: yadm
     state: latest
+  become: true
 
 - name: Fetch dotfiles.
   shell: yadm clone {{ dotfiles_url }}
@@ -13,6 +14,3 @@
 - name: Overwrite local changes, if needed.
   shell: yadm reset --hard
   when: yadm_clone_result.changed
-
-- name: Decrypt files
-  shell: yadm decrypt
