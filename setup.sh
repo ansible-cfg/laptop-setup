@@ -1,7 +1,7 @@
 
 REPO="https://github.com/brpaz/laptop-setup.git"
 SETUP_DIR="$HOME/setup"
-CLONE_DIR="playbooks"
+CLONE_DIR="$SETUP_DIR/playbooks"
 
 echo -e "\033[33mPerforming initial system update and installing base dependencies\033[0m"
 sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y
