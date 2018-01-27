@@ -26,7 +26,7 @@
     - htop
     - atop
     - iotop
-    - iostat
+    - sysstat
     - snapd
     - pwgen
     - python
@@ -45,15 +45,18 @@
     - pandoc
     - mlocate
     - rsync
+  become: true
 
 - name: "Add Flatpak PPA"
   apt_repository:
     repo: 'ppa:alexlarsson/flatpak'
+  become: true
 
 - name: "Install flatpak"
   apt:
     name: flatpak
     state: present
+  become: true
 
 - name: "Get flatpak remotes"
   shell: flatpak remotes
@@ -69,4 +72,5 @@
   with_items:
     - ubuntu-restricted-extras
   when: ansible_distribution == 'Ubuntu'
+  become: true
   
