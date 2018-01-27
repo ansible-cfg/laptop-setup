@@ -22,7 +22,6 @@
     - curl
     - wget
     - git-core
-    - vim
     - tree
     - htop
     - atop

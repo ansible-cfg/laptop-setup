@@ -1,4 +1,14 @@
-- name: Install Python packages
+- name: Python | Install
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - python
+    - python-pip
+    - python-setuptools
+  become: true
+
+- name: Python | Install pip packages
   pip:
     name: "{{ item }}"
     state: latest
