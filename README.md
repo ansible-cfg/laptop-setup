@@ -9,7 +9,7 @@
 On the machine you want to provision just run the following script to start the setup.
 
 ```
-wget -qO- https://github.com/brpaz/laptop-setup/raw/master/setup.sh | bash
+sudo wget -qO- https://github.com/brpaz/laptop-setup/raw/master/setup.sh | bash
 ```
 
 ## TODO

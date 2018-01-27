@@ -7,6 +7,8 @@ echo -e "\033[33mPerforming initial system update and installing base dependenci
 sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y
 sudo apt-get install -y python-pip python-apt python-setuptools git-core python-dev libxml2-dev libxslt-dev wget
 
+mkdir -p $SETUP_DIR
+
 cd $SETUP_DIR
 if [ -d "$CLONE_DIR" ]; then
   echo -e "\033[33mCloning playbook repository onto $CLONE_DIR\033[0m"
@@ -22,6 +24,11 @@ sudo chmod +x scripts/get_latest_release.sh
 sudo mv scripts/get_latest_gh_release.sh /usr/local/bin
 
 ansible-playbook setup.yml -i HOSTS --ask-become-pass --module-path ./ansible_modules
+
+if [ ! $? -eq 0 ]; then
+    echo -e "\033[33mError running ansible playbooks. Aborting ...\033[0m"
+    exit -1
+if
 
 dropbox start -i
 
