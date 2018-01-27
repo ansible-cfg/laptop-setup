@@ -1,5 +1,11 @@
 
-- name: install Webtorrent
+
+- name: Webtorrent | Get latest release from GitHub
+  shell: get_latest_gh_release.sh "webtorrent-desktop"
+  register: rc_version
+  failed_when: rc_version.stdout == '' or rc_version.rc != 0
+
+- name: Webtorrent | Install
   apt:
-    deb: https://github.com/webtorrent/webtorrent-desktop/releases/download/v0.18.0/webtorrent-desktop_0.18.0-1_amd64.deb 
+    deb: https://github.com/webtorrent/webtorrent-desktop/releases/download/{{rc_version.stdout}}/webtorrent-desktop_{{rc_version.stdout[1:]}}-1_amd64.deb 
   become: true

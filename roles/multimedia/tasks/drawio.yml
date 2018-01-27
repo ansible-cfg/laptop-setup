@@ -1,4 +1,10 @@
-- name: Install draw.io
+
+- name: Draw.io | Get latest release from GitHub
+  shell: get_latest_gh_release.sh "jgraph/drawio-desktop"
+  register: rc_version
+  failed_when: rc_version.stdout == '' or rc_version.rc != 0
+
+- name: Draw.io | Install
   apt:
-    deb:  "https://github.com/jgraph/drawio-desktop/releases/download/v7.9.5/draw.io-amd64-7.9.5.deb"
+    deb:  "https://github.com/jgraph/drawio-desktop/releases/download/{{rc_version.stdout}}/draw.io-amd64-{{rc_version.stdout[1:]}}.deb"
   become: true

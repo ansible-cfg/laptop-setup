@@ -1,5 +1,4 @@
 
-
 - name: Installs base development packages from APT
   apt: name={{item}} state=present
   with_items:
@@ -56,3 +55,5 @@
   tags: cli-tools
 - import_tasks: buildnotify.yml
   tags: buildnotify
+- import_tasks: android-tools.yml
+  tags: android

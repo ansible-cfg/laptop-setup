@@ -1,13 +1,13 @@
 - name: Download jetbrains toolbox tarball
   unarchive:
-    src: https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.6.2914.tar.gz
+    src: https://download.jetbrains.com/toolbox/jetbrains-toolbox-{{jetbrains_toolbox_version}}.tar.gz
     remote_src: true
-    dest: "{{setup_dir}}"
+    dest: "{{downloads_dir}}"
     extra_opts: ['--strip-components=1']
 
 - name: Move jetbrains-toolbox executable to correct location
   copy:
-    src: "{{setup_dir}}/jetbrains-toolbox"
+    src: "{{downloads_dir}}/jetbrains-toolbox"
     dest: "/usr/local/bin/jetbrains-toolbox"
     owner: "{{user}}"
     group: "{{group}}"

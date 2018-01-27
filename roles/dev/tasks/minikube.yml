@@ -1,6 +1,12 @@
-- name: Minikube
+
+- name: Minikube | Get latest release from GitHub
+  shell: get_latest_gh_release.sh "kubernetes/minikube"
+  register: rc_version
+  failed_when: rc_version.stdout == '' or rc_version.rc != 0
+
+- name: Minikube | Download and install binary
   get_url:
-    url: https://storage.googleapis.com/minikube/releases/v0.24.1/minikube-linux-amd64
+    url: https://storage.googleapis.com/minikube/releases/{{rc_version.stdout}}/minikube-linux-amd64
     dest: "{{bin_dir}}/minikube"
     mode: a+x
   become: true

@@ -1,3 +1,9 @@
-- name: Install Pencil 
+
+- name: Pencil | Get latest release from GitHub
+  shell: get_latest_gh_release.sh "evolus/pencil"
+  register: rc_version
+  failed_when: rc_version.stdout == '' or rc_version.rc != 0
+
+- name: Pencil | Install
   apt:
-    deb: https://pencil.evolus.vn/dl/V3.0.4/Pencil_3.0.4_amd64.deb
+    deb: https://pencil.evolus.vn/dl/{{rc_version.stdout}}/Pencil_{{rc_version.stdout[1:]}}_amd64.deb

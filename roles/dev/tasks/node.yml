@@ -1,13 +1,19 @@
 ---
-- name: Install nvm
+
+- name: node | Get latest nvm release from GitHub
+  shell: get_latest_gh_release.sh "creationix/nvm"
+  register: rc_version
+  failed_when: rc_version.stdout == '' or rc_version.rc != 0
+
+- name: node | Install nvm
   shell: >
-    curl https://raw.githubusercontent.com/creationix/nvm/v0.7.0/install.sh | sh
+    curl https://raw.githubusercontent.com/creationix/nvm/{{rc_version.stdout}}/install.sh | sh
    
-- name: Install node and set version
+- name: node | Install node and set version
   shell: >
     /bin/bash -c "source ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts"
 
-- name: Install NPM global packages
+- name: node | Install NPM global packages
   npm:
     name: "{{item}}"
     global: yes
@@ -15,20 +21,20 @@
   with_items: "{{npm_global_packages}}"
   tags: npm
 
-- name: Yarn - Add key
+- name: Yarn | Add key
   apt_key:
     url: https://dl.yarnpkg.com/debian/pubkey.gpg
     state: present
   become: true
 
-- name: Yarn - Add repository
+- name: Yarn | Add repository
   apt_repository:
     repo: deb https://dl.yarnpkg.com/debian/ stable main
     state: present
     filename: yarn
   become: true
 
-- name: Yarn - Install package
+- name: Yarn | Install package
   apt:
     name: yarn
     state: latest

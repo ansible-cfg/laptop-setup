@@ -2,9 +2,9 @@
   unarchive:
     src: "https://download.studio3t.com/studio-3t/linux/5.7.3/studio-3t-linux-x64.tar.gz"
     remote_src: true
-    dest: "{{setup_dir}}"
+    dest: "{{downloads_dir}}"
 
 - name: Execute robo3t installer
   command: sh studio-3t-linux-x64.sh
   args:
-    chdir: "{{setup_dir}}"
+    chdir: "{{downloads_dir}}"

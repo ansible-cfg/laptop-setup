@@ -1,11 +1,17 @@
-- name: Download doctl binary
-  unarchive:
-    src: "https://github.com/digitalocean/doctl/releases/download/v1.7.0/doctl-1.7.0-linux-amd64.tar.gz"
-    remote_src: true
-    dest: "{{setup_dir}}"
 
-- name: move executable to path
+- name: Doctl | Get latest release from GitHub
+  shell: get_latest_gh_release.sh "digitalocean/doctl"
+  register: rc_version
+  failed_when: rc_version.stdout == '' or rc_version.rc != 0
+
+- name: Doctl | Download tarball
+  unarchive:
+    src: "https://github.com/digitalocean/doctl/releases/download/{{rc_version.stdout}}/doctl-{{rc_version.stdout[1:]}}-linux-amd64.tar.gz"
+    remote_src: true
+    dest: "{{downloads_dir}}"
+
+- name: Doctl | Install
   shell: mv doctl /usr/local/bin
   args:
-    chdir: "{{setup_dir}}"
+    chdir: "{{downloads_dir}}"
   become: true

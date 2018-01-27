@@ -8,5 +8,5 @@
 
 - name: Install MySQL Workbench
   apt:
-    deb: "https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-6.3.10-1ubuntu17.10-amd64.deb"
+    deb: "https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-{{mysql_wb_version}}ubuntu17.10-amd64.deb"
   become: true

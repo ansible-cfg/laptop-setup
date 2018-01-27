@@ -1,17 +1,22 @@
-- name: Download and pet tarball
-  unarchive: 
-    src: https://github.com/knqyf263/pet/releases/download/v0.2.4/pet_0.2.4_linux_amd64.zip
-    remote_src: true
-    dest: "{{setup_dir}}"
+- name: Pet | Get latest release from GitHub
+  shell: get_latest_gh_release.sh "knqyf263/pet"
+  register: rc_version
+  failed_when: rc_version.stdout == '' or rc_version.rc != 0
 
-- name: Make executable
+- name: Pet | Download and pet tarball
+  unarchive: 
+    src: https://github.com/knqyf263/pet/releases/download/{{rc_version.stdout}}/pet_{{rc_version.stdout[1:]}}_linux_amd64.zip
+    remote_src: true
+    dest: "{{downloads_dir}}"
+
+- name: Pet | Make executable
   file:
-    path: "{{setup_dir}}/pet"
+    path: "{{downloads_dir}}/pet"
     mode: a+x
   become: true
 
-- name: Move pet executable to correct location
+- name: Pet | Move pet executable to correct location
   shell: mv pet /usr/local/bin
   args:
-   chdir: "{{setup_dir}}"
+   chdir: "{{downloads_dir}}"
   become: true

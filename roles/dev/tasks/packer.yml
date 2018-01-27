@@ -1,4 +1,5 @@
 
+
 - name: Check packer is installed
   command: "packer --version"
   register: result

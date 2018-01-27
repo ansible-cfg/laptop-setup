@@ -1,5 +1,5 @@
 - name: Kubectl | Install
   get_url: 
-    url: https://storage.googleapis.com/kubernetes-release/release/v1.9.2/bin/linux/amd64/kubectl
+    url: https://storage.googleapis.com/kubernetes-release/release/v{{kubectl_version}}/bin/linux/amd64/kubectl
     dest: "{{bin_dir}}/kubectl"
     mode: u+rwx

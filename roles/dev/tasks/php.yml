@@ -1,10 +1,10 @@
-- name: Add ondrej PPA
+- name: PHP | Add ondrej PPA
   apt_repository: 
     repo: ppa:ondrej/php
     state: present
   become: true
 
-- name: Install PHP packages
+- name: PHP | Install PHP packages
   apt:
     name: "{{item}}"
   with_items:
@@ -24,23 +24,23 @@
     - php-apcu
   become: true
 
-- name: Install composer
+- name: PHP | Install composer
   shell: "curl -sS https://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer"
   creates: "/usr/local/bin/composer"
 
-- name: Ensure composer global directory exists
+- name: PHP | Ensure composer global directory exists
   file:
     path: "{{ ansible_env.HOME}}/.composer"
     state: directory
     mode: 0755
 
-- name: Set default global composer.json
+- name: PHP | Set default global composer.json
   copy: 
     src: "composer.json"
     dest: "{{ ansible_env.HOME}}/.composer/composer.json"
     force: no
   
-- name: Install composer global packages
+- name: PHP | Install composer global packages
   composer:
     command: require
     global_command: true

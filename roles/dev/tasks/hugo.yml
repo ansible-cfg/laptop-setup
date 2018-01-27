@@ -1,4 +1,9 @@
+- name: Hugo | Get latest release from GitHub
+  shell: get_latest_gh_release.sh "gohugoio/hugo"
+  register: rc_version
+  failed_when: rc_version.stdout == '' or rc_version.rc != 0
+
 - name: Download and install Hugo
   apt:
-    deb: https://github.com/gohugoio/hugo/releases/download/v0.32.4/hugo_0.32.4_Linux-64bit.deb
+    deb: https://github.com/gohugoio/hugo/releases/download/{{rc_version.stdout}}/hugo_{{rc_version.stdout[1:]}}_Linux-64bit.deb
   become: true

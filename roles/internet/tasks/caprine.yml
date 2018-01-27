@@ -1,5 +1,10 @@
 
+- name: Caprine | Get latest release from GitHub
+  shell: get_latest_gh_release.sh "sindresorhus/caprine"
+  register: rc_version
+  failed_when: rc_version.stdout == '' or rc_version.rc != 0
+
 - name: install Caprine
   apt:
-    deb: https://github.com/sindresorhus/caprine/releases/download/v{{caprine_version}}/caprine_{{caprine_version}}_amd64.deb
+    deb: https://github.com/sindresorhus/caprine/releases/download/{{rc_version.stdout}}/caprine_{{rc_version.stdout}}_amd64.deb
   become: true

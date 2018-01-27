@@ -1,5 +1,10 @@
-- name: Install Boostnote
+- name: Boostnote | Get latest release from GitHub
+  shell: get_latest_gh_release.sh "BoostIO/boost-releases"
+  register: rc_version
+  failed_when: rc_version.stdout == '' or rc_version.rc != 0
+
+- name: Boostnote | Install
   apt:
-    deb: "https://github.com/BoostIO/boost-releases/releases/download/v0.8.19/boostnote_0.8.19_amd64.deb"
+    deb: "https://github.com/BoostIO/boost-releases/releases/download/{{rc_version.stdout}}/boostnote_{{rc_version.stdout[1:]}}_amd64.deb"
   become: true
   

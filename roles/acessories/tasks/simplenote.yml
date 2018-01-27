@@ -1,4 +1,9 @@
-- name: Install simplenote
+- name: Simplenote | Get latest version from GitHub
+  shell: get_latest_gh_release.sh "Automattic/simplenote-electron"
+  register: rc_version
+  failed_when: rc_version.stdout == '' or rc_version.rc != 0
+
+- name: Simplenote | Install latest version
   apt:
-    deb: https://github.com/Automattic/simplenote-electron/releases/download/v1.1.2/Simplenote-linux-1.1.2.deb
+    deb: https://github.com/Automattic/simplenote-electron/releases/download/{{rc_version.stdout}}/Simplenote-linux-{{rc_version.stdout[1:]}}.deb
   become: true
