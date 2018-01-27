@@ -10,12 +10,18 @@ sudo apt-get install -y python-pip python-apt python-setuptools git-core python-
 mkdir -p $SETUP_DIR
 
 cd $SETUP_DIR
+
 if [ ! -d "$CLONE_DIR" ]; then
   echo -e "\033[33mCloning playbook repository onto $CLONE_DIR\033[0m"
   git clone $REPO $CLONE_DIR
+  cd $CLONE_DIR
+else
+  cd $CLONE_DIR
+  echo -e "\033[33mUpdating playbooks $CLONE_DIR\033[0m"
+  git pull
 fi
 
-cd $CLONE_DIR
+
 
 echo -e "\033[33mStarting playbook ...\033[0m"
 sudo pip install -r requirements.txt
