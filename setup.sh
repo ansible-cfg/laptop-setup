@@ -20,7 +20,7 @@ cd $CLONE_DIR
 echo -e "\033[33mStarting playbook ...\033[0m"
 sudo pip install -r requirements.txt
 
-sudo chmod +x scripts/get_latest_release.sh 
+sudo chmod +x scripts/get_latest_gh_release.sh 
 sudo mv scripts/get_latest_gh_release.sh /usr/local/bin
 
 ansible-playbook setup.yml -i HOSTS --ask-become-pass --module-path ./ansible_modules
