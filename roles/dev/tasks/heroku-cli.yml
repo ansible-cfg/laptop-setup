@@ -1,9 +1,4 @@
 
-- name: Heroku | check install status
-  command: "heroku --version"
-  register: heroku_version
-  ignore_errors: True
 
 - name: Heroku | Install heroku-cli
   shell: wget -qO- https://cli-assets.heroku.com/install-{{ansible_distribution}}.sh | sh
-  when: "heroku_version.rc != 0"

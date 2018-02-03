@@ -3,7 +3,7 @@
   register: rc_version
   failed_when: rc_version.stdout == '' or rc_version.rc != 0
 
-- name: Pet | Download and pet tarball
+- name: Pet | Download tarball
   unarchive: 
     src: https://github.com/knqyf263/pet/releases/download/{{rc_version.stdout}}/pet_{{rc_version.stdout[1:]}}_linux_amd64.zip
     remote_src: true

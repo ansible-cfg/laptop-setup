@@ -57,7 +57,17 @@
     - { key: '/org/gnome/gedit/preferences/editor/tabs-size', value: 4 }
     - { key: '/org/gnome/gedit/preferences/editor/scheme', value: "'cobalt'" }
 
+- name: Configure gnome terminal
+  dconf:
+    key: "{{item.key}}"
+    value: "{{item.value}}"
+    state: present
+  with_items:
+    - { key: '/org/gnome/Terminal/Legacy/Settings/theme-variant', value: "'dark'" }
+    - { key: '/org/gnome/Terminal/Legacy/Settings/new-terminal-mode', value: "'tab'" }
+    - { key: '/org/gnome/Terminal/Legacy/Settings/menu-accelerator-enabled', value: "false" }
+
 - name: Nautilus | Install new file templates
   copy:
     src: nautilus
-    dest: "{{ansbile_env.HOME}}/Templates"
+    dest: "{{ansible_env.HOME}}/Templates"

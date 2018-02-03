@@ -39,5 +39,5 @@
 - import_tasks: 'webtorrent.yml'
   tags: webtorrent
 
-- import_tasks: 'teamviewer.yml'
-  tags: teamviewer
+#- import_tasks: 'teamviewer.yml'
+#  tags: teamviewer

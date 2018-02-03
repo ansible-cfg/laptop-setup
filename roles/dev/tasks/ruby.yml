@@ -6,11 +6,15 @@
 - name: Download and install rvm
   shell: curl -sSL https://get.rvm.io | bash -s stable --ruby
 
-- name: Sources RVM
-  shell: source {{ ansible_env.HOME }}/.rvm/scripts/rvm
+- name: Get current ruby version
+  shell: >
+    /bin/zsh -c "source ~/.rvm/scripts/rvm && rvm current"
+  register: ruby_version
+
 - name: Install global Rubygems
   gem:
     name: "{{item}}"
     state: latest
   with_items: "{{rubygems}}"
-
+  environment:
+     PATH: "{{ansible_env.HOME}}/.rvm/rubies/{{ruby_version.stdout}}/bin/:{{ ansible_env.PATH }}"

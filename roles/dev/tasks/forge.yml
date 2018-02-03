@@ -1,0 +1,12 @@
+- name: Forge | Download binary
+  shell: curl https://s3.amazonaws.com/datawire-static-files/forge/$(curl https://s3.amazonaws.com/datawire-static-files/forge/latest.url)/forge -o /tmp/forge
+
+- name: Forge | Make executable
+  file:
+    path:  /tmp/forge
+    mode: a+x
+  become: true
+
+- name: Forge | Move binary to bin
+  shell: mv /tmp/forge {{bin_dir}}
+  become: true

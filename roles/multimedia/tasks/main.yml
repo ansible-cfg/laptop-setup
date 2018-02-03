@@ -8,6 +8,7 @@
     - ppa:audio-recorder/ppa
     - ppa:kdenlive/kdenlive-stable
     - ppa:cteehayder/ffmulticonverter
+    - ppa:gnumdk/lollypop
     - ppa:sil/pick
   become: true
 
@@ -30,10 +31,11 @@
     - ffmulticonverter
     - trimage
     - pick
+    - lollypop
   become: true
 
 - import_tasks: spotify.yml
-- import_tasks: google-music-manager.yml
+#- import_tasks: google-music-manager.yml
 
 # Find out why extract is not working for this.
 #- import_tasks: gravit.yml

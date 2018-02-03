@@ -21,6 +21,7 @@
     name: "{{ user }}"
     groups: docker
     append: yes
+  become: true
 
 - name: Docker | Refresh groups
   shell: newgrp docker
@@ -49,19 +50,21 @@
     restart_policy: always
     expose:
     -  8081:8080
+  become: true
 
 - name: Docker | Start Dnsdock container
   docker_container:
     name: dnsdock
     image: aacebedo/dnsdock:latest-amd64
     state: started
-    restart_policy: always
+    restart_policy: unless-stopped
     expose:
       - 172.17.0.1:53:53/udp
+  become: true
 
 - name: Docker | Create portainer data volume
-  docker_volume:
-    name: portainer_data
+  command: docker volume create portainer_data
+  become: true
 
 - name: Docker | Start Portainer container
   docker_container:
@@ -74,3 +77,4 @@
     volumes:
      - /var/run/docker.sock:/var/run/docker.sock
      - portainer_data:/data 
+  become: true

@@ -13,3 +13,4 @@
 - name: Kitematic | Install
   apt:
     deb:  "{{downloads_dir}}/dist/Kitematic_{{rc_version.stdout[1:]}}_amd64.deb"
+  become: true

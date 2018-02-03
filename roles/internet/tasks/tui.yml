@@ -6,7 +6,7 @@
 
 - name: Tui | Download tarball
   unarchive:
-    src: "https://github.com/rhysd/Tui/releases/download/{{rc_version.stdout}}/Tui-linux-x64-{{rc_Version.stdout[1:]}}.zip"
+    src: "https://github.com/rhysd/Tui/releases/download/{{rc_version.stdout}}/Tui-linux-x64-{{rc_version.stdout[1:]}}.zip"
     dest: "{{ downloads_dir }}"
     remote_src: true
 

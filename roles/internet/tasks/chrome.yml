@@ -14,4 +14,5 @@
 - name: Google Chrome | install chrome stable
   apt:
     name: google-chrome-stable
+    update_cache: yes
   become: yes

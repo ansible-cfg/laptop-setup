@@ -12,48 +12,112 @@
     - nginx
   become: true
 
+- import_tasks: android-tools.yml
+  tags: android
+
+# ==================
+# Languages
+# ==================
 - import_tasks: python.yml
   tags: python
+
 - import_tasks: node.yml
   tags: node
+
 - import_tasks: ruby.yml
   tags: ruby
+
 - import_tasks: php.yml
   tags: php
+
 - import_tasks: golang.yml
   tags: go
+
 - import_tasks: java.yml
   tags: java
+
+# ==================
+# Tools
+# ==================
 - import_tasks: vscode.yml
   tags: vscode
+
 - import_tasks: mysql-workbench.yml
+
 - import_tasks: postman.yml
   tags: postman
-- import_tasks: kitematic.yml
-  tags: kitematic
+
 - import_tasks: jetbrains.yml
   tags: jetbrains
+
 - import_tasks: gitbook-editor.yml
   tags: gitbook
+
 - import_tasks: devdocs.yml
   tags: devdocs
-- import_tasks: keylord.yml
-  tags: keylord.yml
+
+# This not working with Ansible . Install manually.
+#- import_tasks: keylord.yml
+#  tags: keylord.yml
 #- import_tasks: robo3t.yml
 #  tags: robo3t
-- import_tasks: lnav.yml
-  tags: lnav
-- import_tasks: hugo.yml
-  tags: hugo
-- import_tasks: minikube.yml
-  tags: minikube
+
 - import_tasks: virtualbox.yml
   tags: virtualbox
 - import_tasks: docker.yml
   tags: docker
-- import_tasks: cli.yml
-  tags: cli-tools
+- import_tasks: minikube.yml
+  tags: minikube
+- import_tasks: ctop.yml
+  tags: ctop
+- import_tasks: kitematic.yml
+  tags: kitematic
+
+# ==================
+# Cli tools
+# ==================
+- import_tasks: hub.yml
+  tags: hub
+- import_tasks: pet.yml
+  tags: pet
+- import_tasks: git-semver.yml
+  tags: git-semver
+- import_tasks: lnav.yml
+  tags: lnav
+- import_tasks: codeclimate-cli.yml
+  tags: codeclimate
+- import_tasks: sterm.yml
+  tags: sterm
+
+# ==================
+# DevOps tools
+# ==================
+- import_tasks: doctl.yml
+  tags: doctl
+- import_tasks: google-cloud-sdk.yml
+  tags: gcloud
+- import_tasks: oc.yml
+  tags: openshift
+- import_tasks: heroku-cli.yml
+- import_tasks: kubectl.yml
+  tags: kubernetes
+- import_tasks: kubectx.yml
+  tags: [kubernetes, kubectx]
+- import_tasks: helm.yml
+  tags: [kubernetes, helm]
+- import_tasks: terraform.yml
+  tags: terraform
+- import_tasks: packer.yml
+- import_tasks: vagrant.yml
+  tags: vagrant
+- import_tasks: forge.yml
+  tags: forge
+
+# ==================
+# Others
+# ==================
+- import_tasks: hugo.yml
+  tags: hugo
+
 - import_tasks: buildnotify.yml
   tags: buildnotify
-- import_tasks: android-tools.yml
-  tags: android

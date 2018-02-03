@@ -46,7 +46,6 @@ npm_global_packages:
   - get-port-cli
   - git-open
   - gitbook-cli
-  - gitbook-cli
   - google-font-installer
   - hotel
   - how2
@@ -111,8 +110,7 @@ pip_global_packages:
   - mkdocs-material 
   - mycli 
   - pep8 
-  - pip 
-  - pip3
+  - pip
   - Pygments 
   - PyLint
   - python-gitlab

@@ -7,6 +7,7 @@
     - ppa:webupd8team/y-ppa-manager
     - ppa:nextcloud-devs/client
     - ppa:stefansundin/truecrypt
+    - ppa:andreas-angerer89/sni-qt-patched
   become: true
 
 - name: Install accessories applications
@@ -22,6 +23,9 @@
     - pyrenamer 
     - nextcloud-client 
     - truecrypt
+    - sni-qt 
+    - sni-qt:i386
+    - hardcode-tray
   become: true
 
 - import_tasks: 'boostnote.yml'
@@ -32,3 +36,6 @@
 
 - import_tasks: 'tilix.yml'
   tags: tilix
+
+- import_tasks: 'hardcode-icons-ifx.yml'
+  tags: hardcode-icons

@@ -42,7 +42,7 @@
 - name: Set shell theme
   dconf:
     key: "/org/gnome/shell/extensions/user-theme"
-    value: "'{{shell_theme}}"
+    value: "'{{shell_theme}}'"
     state: present
 
 - name: Set icon theme

@@ -11,13 +11,19 @@
    
 - name: node | Install node and set version
   shell: >
-    /bin/bash -c "source ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts"
+    /bin/zsh -c "source ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts"
+
+- name: node | Get npm executable path
+  shell: >
+    /bin/zsh -c "source ~/.nvm/nvm.sh && which npm"
+  register: npm_executable_path
 
 - name: node | Install NPM global packages
   npm:
     name: "{{item}}"
     global: yes
     state: latest
+    executable: "{{npm_executable_path.stdout}}"
   with_items: "{{npm_global_packages}}"
   tags: npm
 

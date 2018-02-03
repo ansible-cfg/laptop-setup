@@ -3,10 +3,10 @@
   tags: fonts
 - import_tasks: gnome-shell.yml
   tags: gnome
-  when: "ansible_env.DESKTOP_SESSION == 'gnome'"
+  #when: "ansible_env.DESKTOP_SESSION == 'gnome'"
 - import_tasks: gnome-desktop.yml
   tags: gnome
-  when: "ansible_env.DESKTOP_SESSION == 'gnome'"
+  #when: "ansible_env.DESKTOP_SESSION == 'gnome'"
 - import_tasks: themes.yml
   tags: themes
 - import_tasks: shortcuts.yml

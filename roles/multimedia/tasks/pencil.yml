@@ -6,4 +6,4 @@
 
 - name: Pencil | Install
   apt:
-    deb: https://pencil.evolus.vn/dl/{{rc_version.stdout}}/Pencil_{{rc_version.stdout[1:]}}_amd64.deb
+    deb: https://pencil.evolus.vn/dl/V{{rc_version.stdout[1:]}}/Pencil_{{rc_version.stdout[1:]}}_amd64.deb

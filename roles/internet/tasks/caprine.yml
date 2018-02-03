@@ -6,5 +6,5 @@
 
 - name: install Caprine
   apt:
-    deb: https://github.com/sindresorhus/caprine/releases/download/{{rc_version.stdout}}/caprine_{{rc_version.stdout}}_amd64.deb
+    deb: https://github.com/sindresorhus/caprine/releases/download/{{rc_version.stdout}}/caprine_{{rc_version.stdout[1:]}}_amd64.deb
   become: true

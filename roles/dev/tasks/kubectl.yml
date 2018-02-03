@@ -3,3 +3,4 @@
     url: https://storage.googleapis.com/kubernetes-release/release/v{{kubectl_version}}/bin/linux/amd64/kubectl
     dest: "{{bin_dir}}/kubectl"
     mode: u+rwx
+  become: true

@@ -6,12 +6,12 @@
 
 - name: Hub | Download tarball
   unarchive: 
-    src: https://github.com/github/hub/releases/download/{{rc_version.stdout}}-pre10/hub-linux-amd64-{{rc_version.stdout[1:]}}-pre10.tgz
+    src: https://github.com/github/hub/releases/download/{{rc_version.stdout}}/hub-linux-amd64-{{rc_version.stdout[1:]}}.tgz
     remote_src: true
     dest: "{{downloads_dir}}"
 
 - name: Hub | Install
   shell: ./install
   args:
-   chdir: "{{downloads_dir}}/hub-linux-amd64-2.3.0-pre10"
+   chdir: "{{downloads_dir}}/hub-linux-amd64-{{rc_version.stdout[1:]}}"
   become: true

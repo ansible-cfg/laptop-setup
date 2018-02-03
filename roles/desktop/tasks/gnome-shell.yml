@@ -118,7 +118,6 @@
   with_items:
     - { key: '/org/gnome/shell/extensions/rss-feed/rss-feeds-list', value: "['http://scotch.io/feed', 'https://www.sitepoint.com/feed/', 'http://feeds.feedburner.com/d0od']" }
 
-
 - name: Set gnome properties
   dconf:
     key: "{{item.key}}"

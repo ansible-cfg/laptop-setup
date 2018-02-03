@@ -9,9 +9,11 @@
   apt:
     name: zsh
     state: present
+  become: true
 
 - name: Set zsh as default shell
   user: name={{ user }} shell=/usr/bin/zsh
+  become: true
 
 - name: Check zplug is installed
   stat:
@@ -21,3 +23,6 @@
 - name: Installs zplug
   shell: curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
   when: "zplug_dir.stat.exists == False"
+
+- name: Installs zplug plugins
+  shell: zplug install

@@ -1,8 +1,6 @@
 - name: Install android tools
-  apt:
-    name: "{{item}}"
-    state: present
-  wtih_items:
+  apt: name={{item}} state=present
+  with_items:
     - android-tools-adb 
     - android-tools-fastboot
   become: true

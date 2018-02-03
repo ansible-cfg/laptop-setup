@@ -7,6 +7,6 @@
 - name: Sterm | Install
   get_url:
     url: https://github.com/wercker/stern/releases/download/{{rc_version.stdout[1:]}}/stern_linux_amd64
-    dest: "{{bin_dir}}/sterm"
+    dest: "{{bin_dir}}"
     mode: "a+x"
   become: true

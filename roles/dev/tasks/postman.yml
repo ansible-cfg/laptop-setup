@@ -1,4 +1,4 @@
-- name: Download and Extract Postman
+- name: Postman | Download and Extract Postman
   unarchive:
     src: https://dl.pstmn.io/download/latest/linux64 
     dest: /opt
@@ -7,7 +7,7 @@
     group: "{{group}}"
   become: true
 
-- name: Create Postman .desktop file
+- name: Postman | Create Postman .desktop file
   copy:
     src: postman.desktop
     dest: "{{applications_dir}}/postman.desktop"

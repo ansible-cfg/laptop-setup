@@ -6,5 +6,5 @@
 
 - name: Ramme | Install package
   apt:
-    deb: https://github.com/terkelg/ramme/releases/download/{{rc_version.stdout}}/Ramme_{{rc_version.stdout}}_amd64.deb
+    deb: https://github.com/terkelg/ramme/releases/download/{{rc_version.stdout}}/Ramme_{{rc_version.stdout[1:]}}_amd64.deb
   become: true
