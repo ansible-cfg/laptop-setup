@@ -1,0 +1,10 @@
+- name: fzf | Clone repository
+  git:
+    repo: 'https://github.com/junegunn/fzf.git'
+    dest: "{{downloads_dir}}/fzf-repo"
+    update: yes
+
+- name: fzf | Run install command
+  shell: ./install
+  args:
+    chdir: "{{downloads_dir}}/fzf-repo"

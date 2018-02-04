@@ -19,7 +19,6 @@ bin_dir: "/usr/local/bin"
 gtk_theme: Materia-light
 icon_theme: Papirus-Adapta-Nokto
 shell_theme: Materia-light
-desktop_session: xorg # set session as xorg or wayland
 
 favorite_apps: ['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'com.gexperts.Tilix.desktop', 'spotify.desktop', 'boostnote.desktop', 'simplenote.desktop', 'slack.desktop', 'code.desktop', 'jetbrains-toolbox.desktop', 'mailspring.desktop', 'kitematic.desktop']
 

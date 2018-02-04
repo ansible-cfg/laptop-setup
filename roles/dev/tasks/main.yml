@@ -56,6 +56,9 @@
 - import_tasks: devdocs.yml
   tags: devdocs
 
+- import_tasks: teleconsole.yml
+  tags: teleconsole
+
 # This not working with Ansible . Install manually.
 #- import_tasks: keylord.yml
 #  tags: keylord.yml
@@ -78,12 +81,10 @@
 # ==================
 - import_tasks: hub.yml
   tags: hub
-- import_tasks: pet.yml
-  tags: pet
+
 - import_tasks: git-semver.yml
   tags: git-semver
-- import_tasks: lnav.yml
-  tags: lnav
+
 - import_tasks: codeclimate-cli.yml
   tags: codeclimate
 - import_tasks: sterm.yml

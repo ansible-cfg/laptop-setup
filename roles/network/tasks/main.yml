@@ -12,9 +12,5 @@
     - gufw
   become: true
 
-#- name: Disable systemd-resolved service
-  #systemd: name=systemd-resolved state=stopped enabled=no
-  #become: true
-
 - import_tasks: firewall.yml
   tags: [ 'firewall' ]

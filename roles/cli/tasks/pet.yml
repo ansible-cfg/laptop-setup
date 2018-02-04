@@ -5,7 +5,7 @@
 
 - name: Pet | Download tarball
   unarchive: 
-    src: https://github.com/knqyf263/pet/releases/download/{{rc_version.stdout}}/pet_{{rc_version.stdout[1:]}}_linux_amd64.zip
+    src: https://github.com/knqyf263/pet/releases/download/v0.2.4/pet_0.2.4_linux_amd64.zip
     remote_src: true
     dest: "{{downloads_dir}}"
 

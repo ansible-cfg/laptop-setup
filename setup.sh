@@ -3,6 +3,9 @@ REPO="https://github.com/brpaz/laptop-setup.git"
 SETUP_DIR="$HOME/setup"
 CLONE_DIR="$SETUP_DIR/playbooks"
 
+# Needs for avoid rate limits when using GitHub API to get latest releases.
+export GITHUB_AUTH_TOKEN=47fe0042c26a699e8d2e2d2920ff14ff01f3a93b
+
 echo "\033[33m---------------------------------------------------------------------\033[0m"
 echo "\033[33mPerforming initial system update and installing base dependencies\033[0m"
 echo "\033[33m---------------------------------------------------------------------\033[0m"

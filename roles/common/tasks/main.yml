@@ -7,5 +7,4 @@
     tags: [ 'dotfiles' ]
   - import_tasks: vim.yml
     tags: [ 'vim' ]
-  - import_tasks: shell.yml
 

@@ -1,0 +1,19 @@
+
+- import_tasks: 'zsh.yml'
+  tags: zsh
+
+- import_tasks: 'fd.yml'
+  tags: fd
+
+- import_tasks: 'fzf.yml'
+  tags: fzf
+
+- import_tasks: lnav.yml
+  tags: lnav
+
+- import_tasks: 'glances.yml'
+  tags: glances
+
+# Extract is not working with PET
+#- import_tasks: 'pet.yml'
+#  tags: pet

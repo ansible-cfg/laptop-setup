@@ -23,6 +23,7 @@
 
   roles:
     - { role: common, tags: [ 'common' ] }
+    - { role: cli, tags: ['cli']}
     - { role: network, tags: [ 'network' ] }
     - { role: acessories, tags: [ 'apps', 'acessories' ] }
     - { role: internet, tags: [ 'apps', 'internet' ] }

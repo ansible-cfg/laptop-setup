@@ -1,0 +1,14 @@
+
+- name: Teleconsole | Get latest release from GitHub
+  shell: get_latest_gh_release.sh "gravitational/teleconsole"
+  register: rc_version
+  failed_when: rc_version.stdout == '' or rc_version.rc != 0
+
+- name: Teleconsole | Install
+  unarchive:
+    src: https://github.com/gravitational/teleconsole/releases/download/{{rc_version.stdout}}/teleconsole-v{{rc_version.stdout}}-linux-amd64.tar.gz
+    remote_src: true
+    dest: "{{bin_dir}}"
+    mode: u+rwx
+  become: true
+
