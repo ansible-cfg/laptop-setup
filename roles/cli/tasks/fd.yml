@@ -7,3 +7,4 @@
   apt:
     deb: https://github.com/sharkdp/fd/releases/download/{{rc_version.stdout}}/fd_{{rc_version.stdout[1:]}}_amd64.deb
   become: true
+  ignore_errors: True

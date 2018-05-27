@@ -1,3 +1,0 @@
-- name: Install glances
-  shell: curl -L https://bit.ly/glances | bash
-  become: true

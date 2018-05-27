@@ -7,16 +7,19 @@
   ufw:
     rule: allow
     proto: tcp
-    src: '{{ item }}'
+    port: '{{ item }}'
   with_items:
     - 32400
+  become: true
 
 - name: Plex | Configure firewall to allow UDP traffic
   ufw:
     rule: allow
     proto: udp
-    src: '{{ item }}'
+    port: '{{ item }}'
   with_items:
     - 1900
     - 32469
     - 5353
+  become:
+    true

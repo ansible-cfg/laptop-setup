@@ -1,0 +1,5 @@
+
+- name: "Install Agenda App"
+  flatpak:
+    name: https://flathub.org/repo/appstream/com.github.dahenson.agenda.flatpakref
+    state: present

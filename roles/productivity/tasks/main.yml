@@ -1,0 +1,30 @@
+- import_tasks: 'boostnote.yml'
+  tags: 
+    - boostnote
+    - deb
+
+- import_tasks: 'simplenote.yml'
+  tags: 
+    - simplenote
+    - deb
+
+- import_tasks: 'calendar.yml'
+  tags:
+    - flatpak
+
+- import_tasks: 'contacts.yml'
+  tags:
+    - flatpak
+
+- import_tasks: 'agenda.yml'
+  tags:
+    - flatpak
+
+
+- import_tasks: 'marker.yml'
+  tags:
+    - flatpak
+
+- import_tasks: 'feedreader.yml'
+  tags:
+    - flatpak

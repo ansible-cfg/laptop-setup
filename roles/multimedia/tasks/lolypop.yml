@@ -1,0 +1,4 @@
+- name: Install Lolypop Music player 
+  flatpak:
+    name:  https://flathub.org/repo/appstream/org.gnome.Lollypop.flatpakref
+    state: present

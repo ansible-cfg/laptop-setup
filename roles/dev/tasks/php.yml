@@ -1,26 +1,25 @@
-- name: PHP | Add ondrej PPA
-  apt_repository: 
-    repo: ppa:ondrej/php
-    state: present
-  become: true
+#- name: PHP | Add ondrej PPA
+#  apt_repository: 
+#    repo: ppa:ondrej/php
+#    state: present
+#  become: true
 
 - name: PHP | Install PHP packages
   apt:
     name: "{{item}}"
   with_items:
-    - php7.1-common 
-    - php7.1-cli 
-    - php7.1-fpm 
-    - php7.1-mysql 
-    - php7.1-curl 
-    - php7.1-xsl 
-    - php7.1-intl 
+    - php7.2-common 
+    - php7.2-cli 
+    - php7.2-fpm 
+    - php7.2-mysql 
+    - php7.2-curl 
+    - php7.2-xsl 
+    - php7.2-intl 
     - php-xdebug 
-    - php7.1-xml 
-    - php7.1-sodium 
-    - php7.1-mbstring 
-    - php7.1-json 
-    - php7.1-readline 
+    - php7.2-xml 
+    - php7.2-mbstring 
+    - php7.2-json 
+    - php7.2-readline 
     - php-apcu
   become: true
 

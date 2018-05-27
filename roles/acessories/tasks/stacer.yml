@@ -4,9 +4,5 @@
   failed_when: rc_version.stdout == '' or rc_version.rc != 0
 
 - name: Install stacer
-  apt: deb="https://github.com/oguzhaninan/Stacer/releases/download/{{rc_version.stdout}}//stacer_{{rc_version.stdout[1:]}}_amd64.deb"
+  apt: deb="https://github.com/oguzhaninan/Stacer/releases/download/{{rc_version.stdout}}/stacer_{{rc_version.stdout[1:]}}_amd64.deb"
   become: true
-
-
-
-

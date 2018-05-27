@@ -9,11 +9,18 @@
   tags: fzf
 
 - import_tasks: lnav.yml
-  tags: lnav
+  tags: 
+    - lnav
+    - deb
 
-- import_tasks: 'glances.yml'
-  tags: glances
+- import_tasks: ag.yml
 
-# Extract is not working with PET
+- import_tasks: 'tldr.yml'
+  tags: tldr
+
+# TODO Extract not working
 #- import_tasks: 'pet.yml'
 #  tags: pet
+
+- import_tasks: 'marker.yml'
+  tags: marker

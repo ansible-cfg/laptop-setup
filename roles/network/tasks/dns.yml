@@ -1,0 +1,52 @@
+- name: Configure systemd-resolved
+  copy:
+    src: resolved.conf
+    dest: /etc/systemd/resolved.conf
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  notify: restart systemd-resolved
+
+- name: Symlink resolv.conf
+  file:
+    state: link
+    dest: /etc/resolv.conf
+    src: /run/systemd/resolve/resolv.conf
+    force: yes
+  become: true
+  notify:
+    - Restart networking
+
+- name: Configure .devel to resolve to localhost
+  copy:
+    content: "address=/devel/127.0.0.1"
+    dest: "/etc/NetworkManager/dnsmasq.d/devel"
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  notify:
+    - Restart networking
+
+- name: Configure .test to resolve to localhost
+  copy:
+    content: "address=/test/127.0.0.1"
+    dest: "/etc/NetworkManager/dnsmasq.d/test"
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  notify:
+    - Restart networking
+
+- name: Configure .docker to resolve to localhost
+  copy:
+    content: "address=/docker/127.0.0.1"
+    dest: "/etc/NetworkManager/dnsmasq.d/docker"
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  notify:
+    - Restart networking

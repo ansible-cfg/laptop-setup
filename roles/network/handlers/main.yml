@@ -1,9 +1,15 @@
-- name: restart networkManager
+- name: Restart networking
   systemd:
-    name: NetworkManager
+    name: "{{item}}"
     state: restarted
+  with_items:
+    - systemd-resolved
+    - networking
+    - network-manager
+  become: true
 
-- name: restart dnsmasq
+- name: restart systemd-resolved
   systemd:
-    name: dnsmasq
+    name: systemd-resolved
     state: restarted
+  become: true

@@ -1,0 +1,3 @@
+- name: Install cryptomator
+  apt: deb="https://bintray.com/cryptomator/cryptomator-deb/download_file?file_path=cryptomator-1.3.2-amd64.deb"
+  become: true

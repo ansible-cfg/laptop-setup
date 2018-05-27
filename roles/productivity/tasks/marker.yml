@@ -1,0 +1,5 @@
+
+- name: "Install Marker Flatpak"
+  flatpak:
+    name: https://flathub.org/repo/appstream/com.github.fabiocolacio.marker.flatpakref
+    state: present

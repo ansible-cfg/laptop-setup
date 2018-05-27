@@ -2,5 +2,5 @@
 
 - name: Install GitBook Editor
   apt:
-    deb: "https://www.gitbook.com/editor/linux-64-bit/download"
+    deb: "https://legacy.gitbook.com/editor/linux/download"
   become: true

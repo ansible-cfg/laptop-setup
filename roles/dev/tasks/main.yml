@@ -10,10 +10,8 @@
     - screen
     - tig
     - nginx
+    - zeal
   become: true
-
-- import_tasks: android-tools.yml
-  tags: android
 
 # ==================
 # Languages
@@ -43,6 +41,12 @@
   tags: vscode
 
 - import_tasks: mysql-workbench.yml
+  tags: mysql
+
+- import_tasks: sequeler.yml
+
+- import_tasks: gitkraken.yml
+  tags: gitkraken
 
 - import_tasks: postman.yml
   tags: postman
@@ -59,12 +63,6 @@
 - import_tasks: teleconsole.yml
   tags: teleconsole
 
-# This not working with Ansible . Install manually.
-#- import_tasks: keylord.yml
-#  tags: keylord.yml
-#- import_tasks: robo3t.yml
-#  tags: robo3t
-
 - import_tasks: virtualbox.yml
   tags: virtualbox
 - import_tasks: docker.yml
@@ -73,8 +71,6 @@
   tags: minikube
 - import_tasks: ctop.yml
   tags: ctop
-- import_tasks: kitematic.yml
-  tags: kitematic
 
 # ==================
 # Cli tools
@@ -113,12 +109,8 @@
   tags: vagrant
 - import_tasks: forge.yml
   tags: forge
-
-# ==================
-# Others
-# ==================
 - import_tasks: hugo.yml
   tags: hugo
 
-- import_tasks: buildnotify.yml
-  tags: buildnotify
+- import_tasks: android-studio.yml
+  tags: android

@@ -1,0 +1,3 @@
+- flatpak:
+    name: https://flathub.org/repo/appstream/com.github.babluboy.bookworm.flatpakref
+    state: present

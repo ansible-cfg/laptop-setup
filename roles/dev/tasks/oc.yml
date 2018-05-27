@@ -1,12 +1,6 @@
-
-- name: Openshift | Get latest release from GitHub
-  shell: get_latest_gh_release.sh "openshift/origin"
-  register: rc_version
-  failed_when: rc_version.stdout == '' or rc_version.rc != 0
-
 - name: Openshift | Download tarball
   unarchive:
-    src: https://github.com/openshift/origin/releases/download/{{rc_version.stdout}}/openshift-origin-client-tools-{{rc_version.stdout}}-ab0f056-linux-64bit.tar.gz
+    src: https://github.com/openshift/origin/releases/download/v3.9.0/openshift-origin-client-tools-v3.9.0-191fece-linux-64bit.tar.gz
     remote_src: true
     extra_opts: ['--strip-components=1']
     dest: "{{downloads_dir}}"

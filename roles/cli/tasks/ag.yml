@@ -1,0 +1,41 @@
+
+
+#- name: AG | Get latest version
+#  shell: get_latest_gh_release.sh "ggreer/the_silver_searcher"
+#  register: rc_version
+#  failed_when: rc_version.stdout == '' or rc_version.rc != 0
+
+- name: AG | Ensure dir exists
+  file:
+    path: "{{downloads_dir}}/ag"
+    state: directory
+
+- name: AG | Download Source
+  unarchive:
+    src: https://github.com/ggreer/the_silver_searcher/archive/2.1.0.tar.gz
+    dest: "{{downloads_dir}}/ag"
+    remote_src: true
+    extra_opts: ['--strip-components=1']
+
+- name: AG | Install build dependencies
+  apt:
+    name: "{{item}}"
+  become: true
+  with_items:
+    - automake 
+    - pkg-config 
+    - libpcre3-dev 
+    - zlib1g-dev 
+    - liblzma-dev
+
+- name: AG | Build
+  command:  ./build.sh
+  args:
+    chdir: "{{downloads_dir}}/ag"
+
+- name: AG | Install
+  command: make install
+  args:
+     chdir: "{{downloads_dir}}/ag"
+  become: true
+

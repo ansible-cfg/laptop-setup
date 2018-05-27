@@ -13,20 +13,24 @@
   shell: >
     /bin/bash -c "source ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts"
 
-- name: node | Get npm executable path
-  shell: >
-    /bin/bash -c "source ~/.nvm/nvm.sh && which npm"
-  register: npm_executable_path
+- name: node | get latest version
+  shell: /bin/bash -c "source ~/.nvm/nvm.sh && node -v"
+  register: node_version
+  
+- name: node | Print version
+  debug:
+    msg: node_version.stdout
 
 - name: node | Install NPM global packages
   npm:
     name: "{{item}}"
     global: yes
     state: latest
-    executable: "{{npm_executable_path.stdout}}"
   with_items: "{{npm_global_packages}}"
+  environment:
+    PATH: "{{ansible_env.HOME}}/.nvm//versions/node/{{node_version.stdout}}/bin:{{ ansible_env.PATH }}"
   tags: npm
-
+ 
 - name: Yarn | Add key
   apt_key:
     url: https://dl.yarnpkg.com/debian/pubkey.gpg

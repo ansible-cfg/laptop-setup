@@ -1,1 +1,13 @@
+
+- name: Install games from apt repositories
+  apt:
+    name: "{{item}}"
+  become: true
+  with_items: 
+    - gnome-mines
+    - gnome-sudoku
+    - zsnes
+
+- import_tasks: solitaire.yml
 - import_tasks: steam.yml
+

@@ -1,0 +1,13 @@
+- name: Mount Data partition
+  mount:
+    path: /mnt/DATA
+    src: 62B67553B6752925
+    fstype: ntfs
+    opts: rw,uid=1000,gid=bruno,dmask=022,fmask=022,users,permissions,windows_names,exec,auto 0 0
+    state: present
+
+- name: Symlink Documents
+  file:
+    src: "{{ansible_env.HOME}}/Documents"
+    dest: /mnt/DATA/Documents
+    state: link

@@ -7,7 +7,7 @@
     - { key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding', value: "'F12'" }
     - { key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command', value: "'tilix --profile=\"Quake\" --quake'" }
     - { key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name', value: "'Tilix Quake mode toggle'" }
-
+    
 - name: Set custom keybindings
   dconf:
     key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings'

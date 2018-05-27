@@ -1,16 +1,40 @@
 # My Laptop Setup Playbooks
 
-> This repository contains a set of Ansible Playbooks and bash scripts, to fully provision an Ubuntu based PC with all my used Applications and Settings.
+> This repository contains a set of Ansible Playbooks and bash scripts, to fully provision my personal Laptop with all my favorite applications and settings.
+
+## System Requirements
+
+* Ubuntu 18.04 (it might work on other versions, but not tested)
+* Ansible > 2.1
+* Python > 2.7
+* Gitlab and Github access tokens.
 
 ## Usage
 
-**This is a Work in progress project**
-
-On the machine you want to provision just run the following script to start the setup.
-
 ```
-sudo wget -qO- https://github.com/brpaz/laptop-setup/raw/master/setup.sh | bash
+export GITHUB_AUTH_TOKEN=<my_github_token>
+sudo wget -qO- https://github.com/brpaz/laptop-setup/raw/master/setup.sh | sh
 ```
+
+## Manual Steps
+
+Some tasks couldnt be automated and should be done after running the provision script.
+
+#### Install Software Manually
+
+* [Robo 3T](https://robomongo.org/)
+* [Crashplan](https://www.crashplan.com/en-us/download/)
+* [Keylord](https://protonail.com/)
+
+#### Other
+
+* Sync VScode settings
+* Sync PHPStorm and InteliJ settings
+* Chrome Login
+* Configure "Online Accounts" for Contacts. Calendar, etc
+* Configure workspaces and startup applications.
+* Login into applications (Franz, Ramme, etc)
+* Cleanup "install" dir
 
 ## TODO
 

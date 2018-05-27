@@ -14,3 +14,6 @@
 
 - import_tasks: firewall.yml
   tags: [ 'firewall' ]
+
+- import_tasks: dns.yml
+  tags: dns

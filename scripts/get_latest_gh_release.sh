@@ -1,7 +1,7 @@
 
 #!/usr/bin/env sh
 
-curl curl -H "Content-Type: application/json" -H "authToken: ${GITHUB_AUTH_TOKEN}"  "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
+curl -H "Content-Type: application/json" -H "authToken: ${GITHUB_AUTH_TOKEN}" "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
     grep '"tag_name":' |                                            # Get tag line
     sed -E 's/.*"([^"]+)".*/\1/' 
 

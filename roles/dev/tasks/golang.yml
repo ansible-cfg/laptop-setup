@@ -1,6 +1,6 @@
 - name: Download golang tarball
   unarchive:
-   src: https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz
+   src: https://storage.googleapis.com/golang/go{{go_version}}.linux-amd64.tar.gz
    remote_src: true
    dest:  /usr/local
   become: true
@@ -11,7 +11,7 @@
   environment: 
     GOROOT: '{{ go_root }}'
     GOPATH: '{{ go_path }}'
-    PATH:   '$PATH:/usr/bin:{{ go_bin_dir}}'
+    PATH: "{{ go_bin_dir }}:{{ ansible_env.PATH }}"
 
 - name: Add go binaries to path
   lineinfile: >
@@ -19,10 +19,11 @@
     create=yes
     line="{{ item }}"
   with_items:
+    - ''
     - '# GO Exports'
     - 'export GOROOT={{ go_root }}'
     - 'export GOPATH={{ go_path }}'
-    - 'export PATH=$PATH:$GOPATH/bin'
+    - 'export PATH=$PATH:$GOPATH/bin:$GOROOT/bin'
 
 - name: Install golang globall packages
   shell: go get -v {{item}}
@@ -33,4 +34,4 @@
   environment:
     GOROOT: '{{ go_root }}'
     GOPATH: '{{ go_path }}'
-    PATH:   '$PATH:/usr/bin:{{ go_bin_dir }}'
+    PATH: "{{ go_bin_dir }}:{{ ansible_env.PATH }}"

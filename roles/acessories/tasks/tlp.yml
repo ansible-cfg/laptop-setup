@@ -1,0 +1,11 @@
+- name: Install tlp
+  apt:
+    name: "{{item}}"
+  become: true
+  with_items:
+    - tlp
+    - tlp-rdw
+
+- name: Start tlp
+  command:  tlp start
+  become: true

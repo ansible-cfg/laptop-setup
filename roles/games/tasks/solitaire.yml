@@ -1,0 +1,4 @@
+- name: Install solitaire from Flatpak
+  flatpak:
+    name: https://flathub.org/repo/appstream/org.gnome.Aisleriot.flatpakref
+    state: present

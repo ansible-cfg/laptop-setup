@@ -10,7 +10,6 @@
   with_items:
     - fontconfig
     - typecatcher
-    - font-manager
     - fonts-firacode
     - fonts-powerline
   become: true

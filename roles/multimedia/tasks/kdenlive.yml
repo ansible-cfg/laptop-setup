@@ -1,0 +1,3 @@
+- flatpak:
+    name:  https://flathub.org/repo/appstream/org.kde.kdenlive.flatpakref
+    state: present

@@ -1,10 +1,3 @@
-
-- name: Add Tilix PPA
-  apt_repository:
-    repo: ppa:webupd8team/terminix
-    state: present
-  become: true
-
 - name: Install Tilix
   apt:
     name: tilix
@@ -29,6 +22,8 @@
     - { key: '/com/gexperts/Tilix/terminal-title-style ', value: "'NONE'" }
     - { key: '/com/gexperts/Tilix/terminal-title-show-when-single', value: "false" }
     - { key: '/com/gexperts/Tilix/theme-variant', value: "'dark'" }
+    - { key: '/com/gexperts/Tilix/new-instance-mode', value: "'new-session'" }
+    - { key: '/com/gexperts/Tilix/sidebar-on-right', value: "true" }
 
 - name: Set Tilix as default terminal
   alternatives:
@@ -36,3 +31,10 @@
     link: /usr/bin/x-terminal-emulator
     path: /usr/bin/tilix
   become: true
+
+- name: Symlink gnome terminal to Tilix
+  file:
+    src: /usr/bin/gnome-terminal
+    dest: /usr/bin/tilix
+  become: true
+  ignore_errors: True

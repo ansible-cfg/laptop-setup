@@ -1,0 +1,14 @@
+- name: Clone git repository
+  git:
+    repo: https://github.com/pindexis/marker
+    dest: "{{ansible_env.HOME}}/.marker"
+
+- name: Run installer
+  shell: ./install.py
+  args:
+    chdir: "{{ansible_env.HOME}}/.marker"
+
+- name: Add to zshrc
+  lineinfile:
+    path: "{{ansible_env.HOME}}/.zshrc"
+    line: '[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"'

@@ -1,7 +1,7 @@
 go_root: /usr/local/go
 go_bin_dir: /usr/local/go/bin
 go_path: "{{ansible_env.HOME}}/go"
-
+go_version: 1.9.2
 docker_bip: 172.17.0.1
 mysql_wb_version: 6.3.10-1
 kubectl_version: 1.9.2
@@ -9,7 +9,6 @@ jetbrains_toolbox_version: 1.6.2914
 vagrant_version: 2.0.1
 
 npm_global_packages:
-  - angular-cli
   - artillery
   - bitbucket-cli
   - caniuse-cmd
@@ -22,7 +21,6 @@ npm_global_packages:
   - electron
   - electron-forge
   - electron-packager
-  - ember-cli
   - eslint
   - eslint-config-airbnb-base
   - eslint-plugin-import
@@ -54,12 +52,10 @@ npm_global_packages:
   - lighthouse
   - localtunnel
   - markdown-toc
-  - mediumcli
   - namecheap-cli
   - nodemon
   - np
   - opn-cli
-  - overcast
   - pageres-cli
   - parse-columns-cli
   - pdf-cli
@@ -70,7 +66,6 @@ npm_global_packages:
   - release-it
   - resume-cli
   - serverless
-  - tldr
   - trash-cli
   - typescript
   - viewport-list-cli
@@ -96,7 +91,6 @@ rubygems:
 composer_global_packages:
   - felixfbecker/language-server
   - hirak/prestissimo
-  - jetbrains/phpstorm-stubs
   - friendsofphp/php-cs-fixer
 
 pip_global_packages:

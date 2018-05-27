@@ -1,0 +1,8 @@
+- name: Download tldr package
+  get_url: 
+    url: https://4e4.win/tldr
+    dest: "{{bin_dir}}"
+    mode: a+x
+    owner: "{{user}}"
+    group: "{{group}}"
+  become: true

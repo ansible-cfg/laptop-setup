@@ -1,4 +1,4 @@
 - name: install Skype
-  apt:
-    deb: https://go.skype.com/skypeforlinux-64.deb
-  become: true
+  flatpak:
+    name: https://flathub.org/repo/appstream/com.skype.Client.flatpakref
+    state: present

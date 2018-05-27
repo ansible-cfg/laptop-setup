@@ -80,3 +80,18 @@
     - { key: "/org/gnome/desktop/screensaver/picture-uri", value: "'file://{{ansible_env.HOME}}/.local/share/backgrounds/wallpaper_porto_001.jpg'" }
     - { key: "/org/gnome/desktop/background/picture-options", value: "'zoom'" }
     - { key: "/org/gnome/desktop/background/show-desktop-icons", value: "true" }
+
+- name: Install flatpak applications themes
+  shell: flatpak install flathub {{item}}
+  with_items:
+    - org.gtk.Gtk3theme.Arc
+    - org.gtk.Gtk3theme.Arc-Dark
+    - org.gtk.Gtk3theme.Arc-Darker
+    - org.gtk.Gtk3theme.Adapta
+    - org.gtk.Gtk3theme.Adapta-Eta
+    - org.gtk.Gtk3theme.Adapta-Nokto
+    - org.gtk.Gtk3theme.Adapta-Nokto-Eta
+    - org.gtk.Gtk3theme.Ambiance
+    - org.gtk.Gtk3theme.Materia
+    - org.gtk.Gtk3theme.Materia-dark
+    - org.gtk.Gtk3theme.Materia-light

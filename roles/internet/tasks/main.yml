@@ -6,38 +6,59 @@
     - transmission
     - hexchat
     - uget
-    #- reminna
+    - corebird
   become: true
 
 - import_tasks: 'dropbox.yml'
   tags: dropbox
 
 - import_tasks: 'chrome.yml'
-  tags: chrome
+  tags: 
+    - chrome
+    - browser
 
 - import_tasks: 'discord.yml'
-  tags: discord
+  tags: 
+    - discord
+    - communication
+    - deb
 
 - import_tasks: 'mailspring.yml'
   tags: mailspring
 
+- import_tasks: 'franz.yml'
+
 - import_tasks: 'ramme.yml'
-  tags: ramme
+  tags: 
+    - ramme
+    - social
+    - deb
 
 - import_tasks: 'skype.yml'
-  tags: skype
+  tags: 
+    - skype
+    - communication
+    - deb
 
 - import_tasks: 'slack.yml'
-  tags: slack
+  tags: 
+   - slack
+   - communication
+   - flatpak
 
 - import_tasks: 'caprine.yml'
-  tags: caprine
-
-- import_tasks: 'tui.yml'
-  tags: tui
+  tags: 
+    - caprine
+    - communication
+    - social
+    - deb
 
 - import_tasks: 'webtorrent.yml'
-  tags: webtorrent
+  tags:
+    - webtorrent
+    - deb
+
+- import_tasks: 'authenticator.yml'
 
 #- import_tasks: 'teamviewer.yml'
 #  tags: teamviewer

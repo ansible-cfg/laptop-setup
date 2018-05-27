@@ -1,17 +1,29 @@
-- name: Installs RVM GPG key
+- mame: Ruby | Install RVM dependencies
+  apt:
+    name: "{{item}}"
+  with_items:
+    - curl
+    - gnupg 
+    - build-essential
+
+- name: Ruby | Installs RVM GPG key
   gpg_import: 
      key_id: 409B6B1796C275462A1703113804BB82D39DC0E3
      state: present
 
-- name: Download and install rvm
+- name: Ruby | Download and install rvm
   shell: curl -sSL https://get.rvm.io | bash -s stable --ruby
 
-- name: Get current ruby version
+- name: Ruby | Get current ruby version
   shell: >
-    /bin/zsh -c "source ~/.rvm/scripts/rvm && rvm current"
+    /bin/bash -c "source ~/.rvm/scripts/rvm && rvm current"
   register: ruby_version
 
-- name: Install global Rubygems
+- name: Ruby | Print version
+  debug:
+    msg: "{{ruby_version.stdout}}"
+
+- name: Ruby | Install global Rubygems
   gem:
     name: "{{item}}"
     state: latest

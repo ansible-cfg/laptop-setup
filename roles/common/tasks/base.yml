@@ -16,7 +16,6 @@
   with_items:
     - apt-transport-https
     - ca-certificates
-    - python-software-properties
     - software-properties-common
     - build-essential
     - curl
@@ -32,14 +31,11 @@
     - python
     - python-pip
     - ncdu
-    - tlp
-    - tlp-rdw
     - unzip
     - unar
     - libssl-dev
     - gnupg2
     - xclip
-    - realpath
     - pandoc
     - mlocate
     - rsync

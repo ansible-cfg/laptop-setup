@@ -1,0 +1,4 @@
+- name: Install Polari
+  flatpak:
+    name: https://git.gnome.org/browse/gnome-apps-nightly/plain/polari.flatpakref
+    state: present

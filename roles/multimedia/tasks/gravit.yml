@@ -1,5 +1,3 @@
-- name: Download GravitDesigner
-  unarchive:
-    remote_src: true
-    src: https://designer.gravit.io/_downloads/linux/GravitDesigner.zip?v=3.2.6
-    dest: "{{downloads_dir}}"
+- name: Install GravitDesigner snap package
+  command: snap install gravit-designer
+  become: true

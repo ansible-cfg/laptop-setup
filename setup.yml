@@ -2,10 +2,10 @@
   hosts: local
   connection: local
 
-  #vars_prompt:
-  #  - name: gitlab_password
-  #    prompt: "Enter your Gitlab password? Required to fetch dotfiles"
-  #    private: yes
+  vars_prompt:
+    - name: gitlab_password
+      prompt: "Enter your Gitlab password? Required to fetch dotfiles"
+      private: yes
 
   vars_files:
     - vars/defaults.yml
@@ -22,16 +22,16 @@
         - "{{downloads_dir}}"
 
   roles:
-    - { role: common, tags: [ 'common' ] }
-    - { role: cli, tags: ['cli']}
-    - { role: network, tags: [ 'network' ] }
-    - { role: acessories, tags: [ 'apps', 'acessories' ] }
-    - { role: internet, tags: [ 'apps', 'internet' ] }
-    - { role: multimedia, tags: [ 'apps', 'multimedia' ] }
-    - { role: dev, tags: [ 'apps', 'dev' ] }
-    - { role: games, tags: [ 'apps', 'games' ] }
-    - { role: desktop, tags: [ 'desktop'] }
-    - { role: cerebro, tags: ['cerebro']} # Needs to be loaded after "dev" role because it needs npm installed to download
+     - { role: common, tags: [ 'common' ] }
+     - { role: cli, tags: ['cli']}
+     - { role: network, tags: [ 'network' ] }
+     - { role: acessories, tags: [ 'apps', 'acessories' ] }
+     - { role: productivity, tags: [ 'apps', 'productivity' ] }
+     - { role: internet, tags: [ 'apps', 'internet' ] }
+     - { role: multimedia, tags: [ 'apps', 'multimedia' ] }
+     - { role: dev, tags: [ 'apps', 'dev' ] }
+     - { role: desktop, tags: [ 'desktop'] }
+     - { role: games, tags: [ 'apps', 'games' ] }
 
   post_tasks:
     - name: Set favorite apps

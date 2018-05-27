@@ -13,5 +13,15 @@
   with_items:
     - { src: '{{downloads_dir}}/kubectx-master/kubectx', dest: '{{bin_dir}}/kubectx'}
     - { src: '{{downloads_dir}}/kubectx-master/kubens', dest: '{{bin_dir}}/kubens'}
-    - { src: '{{downloads_dir}}/kubectx-master/utils.bash', dest: '{{bin_dir}}/utils.bash'}
   become: true
+
+- name: Copy zsh completion
+  copy:
+    src: "{{item.src}}"
+    dest: "{{item.dest}}"
+    owner: "{{user}}"
+    group: "{{group}}"
+    force: no
+  with_items:
+    - { src: '{{downloads_dir}}/kubectx-master/completion/kubens.zsh', dest: '{{ansible_env.HOME}}/.zsh/completions/kubens.zsh'}
+    - { src: '{{downloads_dir}}/kubectx-master/completion/kubectx.zsh', dest: '{{ansible_env.HOME}}/.zsh/completions/kubectx.zsh'}

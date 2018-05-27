@@ -13,7 +13,7 @@
      - { key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-6', value: ['<Super>6'] }
      - { key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-7', value: ['<Super>7'] }
      - { key: '/org/gnome/desktop/wm/keybindings/switch-to-workspace-8', value: ['<Super>8'] }
-     - { key: '/org/gnome/desktop/wm/keybindings/toggle-fullscreen', value: ['<Super>F'] }
+     - { key: '/org/gnome/desktop/wm/keybindings/toggle-fullscreen', value: ['F11'] }
      - { key: '/org/gnome/desktop/wm/keybindings/switch-input-source', value: [''] }
      - { key: '/org/gnome/desktop/wm/keybindings/show-desktop', value: ['<Super>D'] }
      - { key: '/org/gnome/desktop/wm/keybindings/switch-input-source-backwards', value: [''] }
@@ -22,9 +22,9 @@
      - { key: '/org/gnome/desktop/wm/keybindings/activate-window-menu', value: [''] }
      - { key: '/org/gnome/desktop/wm/keybindings/move-to-center', value: ['<Super>C'] }
      - { key: '/org/gnome/desktop/wm/keybindings/move-to-corner-ne', value: ['<Super><Alt><Right>Up'] }
-     - { key: '/org/gnome/desktop/wm/keybindings move-to-corner-nw', value: ['<Super><Alt><Left>Up'] }
-     - { key: '/org/gnome/desktop/wm/keybindings move-to-corner-se', value: ['<Super><Alt><Right>Down'] }
-     - { key: '/org/gnome/desktop/wm/keybindings move-to-corner-se', value: ['<Super><Alt><Left>Down'] }
+     - { key: '/org/gnome/desktop/wm/keybindings/move-to-corner-nw', value: ['<Super><Alt><Left>Up'] }
+     - { key: '/org/gnome/desktop/wm/keybindings/move-to-corner-se', value: ['<Super><Alt><Right>Down'] }
+     - { key: '/org/gnome/desktop/wm/keybindings/move-to-corner-se', value: ['<Super><Alt><Left>Down'] }
 
 - name: Configure Window manager preferences
   dconf:
@@ -63,11 +63,14 @@
     value: "{{item.value}}"
     state: present
   with_items:
-    - { key: '/org/gnome/Terminal/Legacy/Settings/theme-variant', value: "'dark'" }
-    - { key: '/org/gnome/Terminal/Legacy/Settings/new-terminal-mode', value: "'tab'" }
-    - { key: '/org/gnome/Terminal/Legacy/Settings/menu-accelerator-enabled', value: "false" }
+    - { key: '/org/gnome/terminal/legacy/theme-variant', value: "'dark'" }
+    - { key: '/org/gnome/terminal/legacy/new-terminal-mode', value: "'tab'" }
+    - { key: '/org/gnome/terminal/legacy/menu-accelerator-enabled', value: "false" }
+    - { key: '/org/gnome/terminal/legacy/theme-variant', value: "'dark'" }
+    - { key: '/org/gnome/terminal/legacy/new-terminal-mode', value: "'tab'" }
+    - { key: '/org/gnome/terminal/legacy/menu-accelerator-enabled', value: "false" }
 
 - name: Nautilus | Install new file templates
   copy:
-    src: nautilus
+    src: nautilus/templates
     dest: "{{ansible_env.HOME}}/Templates"

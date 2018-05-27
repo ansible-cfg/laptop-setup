@@ -1,0 +1,4 @@
+ - name: Install Gnome Photos
+   flatpak:
+    name: https://flathub.org/repo/appstream/org.gnome.Photos.flatpakref
+    state: present

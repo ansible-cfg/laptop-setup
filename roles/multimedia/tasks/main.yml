@@ -4,12 +4,9 @@
     repo: "{{item}}"
     state: present
   with_items:
-    - ppa:peek-developers/stable
     - ppa:audio-recorder/ppa
-    - ppa:kdenlive/kdenlive-stable
     - ppa:cteehayder/ffmulticonverter
-    - ppa:gnumdk/lollypop
-    - ppa:sil/pick
+    #- ppa:sil/pick
   become: true
 
 - name: Install Multimedia applications from APT
@@ -17,33 +14,63 @@
   with_items:
     - audacity
     - youtube-dl
-    - vlc
     - shutter 
     - kazam 
     - pinta 
-    - kdenlive
     - easytag
     - handbrake
     - ffmpeg
-    - peek
     - audio-recorder
     - brasero
     - ffmulticonverter
     - trimage
-    - pick
-    - lollypop
+    #- pick
   become: true
 
 - import_tasks: spotify.yml
-#- import_tasks: google-music-manager.yml
+  tags:
+    - flatpack
 
-# Find out why extract is not working for this.
-#- import_tasks: gravit.yml
-#  tags: gravit
+- import_tasks: vlc.yml
+  tags:
+    - flatpack
+
+- import_tasks: kdenlive.yml
+  tags:
+    - flatpack
+
+- import_tasks: peek.yml
+  tags:
+    - flatpack
+
+- import_tasks: lolypop.yml
+  tags:
+    - flatpack
+
+- import_tasks: photos.yml
+  tags:
+    - flatpack
+
+- import_tasks: bookworm.yml
+  tags:
+    - flatpack
+
+- import_tasks: gravit.yml
+  tags: [gravit,snap]
+
 - import_tasks: gradio.yml
+  tags:
+   - gradio
+   - flatpack
+
 - import_tasks: pencil.yml
+  tags: deb
+
 - import_tasks: plex.yml
+  tags: plex
+
 - import_tasks: xnview.yml
+  tags: xnview
 
 
 

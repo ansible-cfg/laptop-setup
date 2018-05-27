@@ -6,8 +6,6 @@
   with_items:
     - ppa:webupd8team/y-ppa-manager
     - ppa:nextcloud-devs/client
-    - ppa:stefansundin/truecrypt
-    - ppa:andreas-angerer89/sni-qt-patched
   become: true
 
 - name: Install accessories applications
@@ -15,27 +13,31 @@
   with_items:
     - menulibre
     - ufw
-    - gnome-contacts
-    - bleachbit 
+    - bleachbit
     - grsync 
     - gparted 
     - y-ppa-manager 
-    - pyrenamer 
+    - gprename
     - nextcloud-client 
-    - truecrypt
-    - sni-qt 
-    - sni-qt:i386
-    - hardcode-tray
+    - usb-creator-gtk
   become: true
-
-- import_tasks: 'boostnote.yml'
-  tags: boostnote
-  
-- import_tasks: 'simplenote.yml'
-  tags: simplenote
 
 - import_tasks: 'tilix.yml'
   tags: tilix
 
-- import_tasks: 'hardcode-icons-ifx.yml'
-  tags: hardcode-icons
+- import_tasks: 'stacer.yml'
+  tags: 
+    - stacer
+    - deb
+
+- import_tasks: 'tlp.yml'
+  tags: tlp
+
+#- import_tasks: 'android-tools.yml'
+#  tags: android-tools
+
+- import_tasks: 'cryptomator.yml'
+  tags: cryptomator
+
+- import_tasks: 'ulauncher.yml'
+  tags: ulauncher

@@ -1,0 +1,4 @@
+- name: Install VLC 
+  flatpak:
+    name:  https://flathub.org/repo/appstream/org.videolan.VLC.flatpakref
+    state: present

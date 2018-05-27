@@ -1,0 +1,6 @@
+- name: Install feedreader
+  flatpak:
+    name: https://flathub.org/repo/appstream/org.gnome.FeedReader.flatpakref
+    state: present
+
+    
