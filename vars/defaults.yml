@@ -1,6 +1,7 @@
 setup_dir: "{{ansible_env.HOME}}/setup"
 downloads_dir: "{{setup_dir}}/downloads"
 gitlab_user: brpaz
+gitlab_password: "{{ lookup('env','GITLAB_PASSWORD') }}"
 
 # ===============================
 # System variables
