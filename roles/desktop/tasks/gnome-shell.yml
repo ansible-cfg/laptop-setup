@@ -18,7 +18,7 @@
   become: true
  
 - name: Install gnome Extensions
-  shell: gnome-shell-extension-installer 19 55 1176 1031 1011 800 750 97 427 708 779 948 906 1269 1162 820 941 1228 1125 1238 1319
+  shell: gnome-shell-extension-installer 19 55 1176 1031 1011 800 750 97 708 779 948 906 1269 1162 820 941 1228 1125 1238 1319
 
 - name: Configure Dash To dock extension
   dconf:
@@ -32,7 +32,7 @@
     - { key: '/org/gnome/shell/extensions/dash-to-dock/multi-monitor', value: "true" }
     - { key: '/org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size', value: "32" }
     - { key: '/org/gnome/shell/extensions/dash-to-dock/custom-theme-running-docks', value: "true" }
-    - { key: '/org/gnome/shell/extensions/dash-to-dock/background-opacity', value: "0.2" }
+    - { key: '/org/gnome/shell/extensions/dash-to-dock/background-opacity', value: "0.0" }
     - { key: '/org/gnome/shell/extensions/dash-to-dock/hotkeys', value: "false" }
     - { key: '/org/gnome/shell/extensions/dash-to-dock/click-action', value: "'minimize'" } 
 
