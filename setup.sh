@@ -16,8 +16,7 @@ sudo cp scripts/get_latest_gh_release.sh /usr/local/bin
 sudo chmod +x /usr/local/bin/get_latest_gh_release.sh 
 sudo chown $USER:$USER /usr/local/bin/get_latest_gh_release.sh 
 
-ansible-playbook setup.yml -i HOSTS --ask-become-pass --module-path ./ansible_modules
- 
+ansible-playbook setup.yml -i HOSTS --ask-become-pass --module-path ./ansible_modules # --tags "configuration,packages"
 yadm decrypt
 
 exec zsh

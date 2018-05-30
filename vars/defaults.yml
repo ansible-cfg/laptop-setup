@@ -19,4 +19,4 @@ gtk_theme: Materia-light
 icon_theme: Papirus-Adapta-Nokto
 shell_theme: Materia-light
 
-favorite_apps: ['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'com.gexperts.Tilix.desktop', 'spotify.desktop', 'boostnote.desktop', 'simplenote.desktop', 'franz.desktop', 'code.desktop', 'jetbrains-toolbox.desktop', 'mailspring.desktop']
+favorite_apps: ['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'com.gexperts.Tilix.desktop', 'spotify.desktop', 'boostnote.desktop', 'simplenote.desktop', 'franz.desktop', 'code.desktop', 'jetbrains-toolbox.desktop', 'mailspring.desktop','pinta.desktop','zeal.desktop']
