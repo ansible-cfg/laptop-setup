@@ -14,7 +14,9 @@
 ```
 export GITHUB_AUTH_TOKEN=<my_github_token>
 export GITLAB_PASSWORD=mygitlabpassowrd
-sudo wget -qO- https://github.com/brpaz/laptop-setup/raw/master/setup.sh | sh
+git clone https://github.com/brpaz/laptop-setup.git 
+sudo chmod +x setup.sh
+./setup.sh
 ```
 
 ## Manual Steps

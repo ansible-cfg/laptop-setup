@@ -1,7 +1,6 @@
 
 set -e
 
-REPO="https://github.com/brpaz/laptop-setup.git"
 SETUP_DIR="$HOME/setup"
 CLONE_DIR="$SETUP_DIR/playbooks"
 
@@ -9,16 +8,6 @@ sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y
 sudo apt-get install -y python-pip python-apt python-setuptools git-core python-dev libxml2-dev libxslt-dev wget
 
 mkdir -p $SETUP_DIR
-
-cd $SETUP_DIR
-
-if [ ! -d "$CLONE_DIR" ]; then
-  git clone $REPO $CLONE_DIR
-  cd $CLONE_DIR
-else
-  cd $CLONE_DIR
-  git reset HEAD --hard &&  git pull
-fi
 
 sudo pip install -r requirements.txt
 
